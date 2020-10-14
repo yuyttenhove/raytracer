@@ -7,7 +7,7 @@
 
 
 #include "Ray.h"
-#include "Triangle.h"
+#include "../Geometry/Triangle.h"
 
 class RayBouncer {
 

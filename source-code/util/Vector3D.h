@@ -5,30 +5,53 @@
 #ifndef RAYTRACER_VECTOR3D_H
 #define RAYTRACER_VECTOR3D_H
 
+#include <cmath>
+#include <iostream>
+
+using namespace std;
+
 
 class Vector3D {
 
-    int x;
-    int y;
-    int z;
+    double x;
+    double y;
+    double z;
 
 public:
-    Vector3D(int x, int y, int z);
+    Vector3D(double x, double y, double z);
+
+    Vector3D();
 
 public:
-    int getX() const;
+    double getX() const;
 
-    void setX(int x);
+    void setX(double x);
 
-    int getY() const;
+    double getY() const;
 
-    void setY(int y);
+    void setY(double y);
 
-    int getZ() const;
+    double getZ() const;
 
-    void setZ(int z);
+    void setZ(double z);
+
+    Vector3D operator+(Vector3D otherVec);
+
+    Vector3D operator*(double scalar);
+
+    double dot(Vector3D otherVec) const;
+
+    double length();
+
+    Vector3D scalar(double scalar);
+
+    Vector3D normalize();
+
+    Vector3D cross(Vector3D otherVec) const;
 
 };
+
+ostream &operator<<(ostream &os, Vector3D vector);
 
 
 #endif //RAYTRACER_VECTOR3D_H

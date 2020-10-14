@@ -6,7 +6,7 @@
 #define RAYTRACER_TRIANGLECOLLECTION_H
 
 #include "Triangle.h"
-#include "Ray.h"
+#include "../RayUtils/Ray.h"
 
 class TriangleCollection {
 
@@ -15,5 +15,6 @@ public:
 
 
 };
+
 
 #endif //RAYTRACER_TRIANGLECOLLECTION_H

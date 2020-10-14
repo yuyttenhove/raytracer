@@ -7,7 +7,7 @@
 
 
 #include "Ray.h"
-#include "TriangleCollection.h"
+#include "../Geometry/TriangleCollection.h"
 #include "RayBouncer.h"
 
 class RayIntensityCalculator {
