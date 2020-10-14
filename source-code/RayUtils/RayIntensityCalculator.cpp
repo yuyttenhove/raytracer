@@ -8,15 +8,11 @@ double RayIntensityCalculator::calculateIntensityRay(Ray ray) {
 
     Triangle triangle = triangleCollection.getClosestTriangle(ray);
 
-
-    double totalIntensity = 0;
-    for (int i = 0; i < numberOfRaysPerBounce; ++i) {
-        Ray bounce = rayBouncer.getBounce(triangle, ray);
-        double intensity = calculateIntensityRay(bounce);
-        totalIntensity += intensity;
+    if (triangle.getMaterial()->isLightSource()) {
+        return 1;
+    } else {
+        return 0;
     }
-
-    return totalIntensity;
 }
 
 RayIntensityCalculator::RayIntensityCalculator(

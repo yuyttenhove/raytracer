@@ -7,8 +7,11 @@
 
 #include "Triangle.h"
 #include "../RayUtils/Ray.h"
+#include <vector>
 
 class TriangleCollection {
+
+    vector<Triangle> triangles;
 
 public:
     Triangle getClosestTriangle(Ray ray);

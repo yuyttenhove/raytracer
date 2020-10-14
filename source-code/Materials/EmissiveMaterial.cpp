@@ -4,6 +4,9 @@
 
 #include "EmissiveMaterial.h"
 
-double EmissiveMaterial::calculateIntensity(Ray ray) {
-    return intensity;
+
+EmissiveMaterial::EmissiveMaterial(double intensity) : intensity(intensity) {}
+
+bool EmissiveMaterial::isLightSource() {
+    return true;
 }

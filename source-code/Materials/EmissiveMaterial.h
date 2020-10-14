@@ -10,9 +10,14 @@
 
 class EmissiveMaterial : public Material {
 
-    double intensity;
+public:
+    EmissiveMaterial(double intensity);
 
-    double calculateIntensity(Ray ray) override;
+    bool isLightSource() override;
+
+private:
+
+    double intensity;
 
 
 };

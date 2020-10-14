@@ -3,8 +3,19 @@
 //
 
 #include "Picture.h"
+#include <fstream>
 
 void Picture::writeToFile(string fileName) {
+
+    ofstream myfile;
+    myfile.open(fileName);
+    for (const auto &row:pixels) {
+        for (auto pixel:row) {
+            myfile << pixel << "\t";
+        }
+        myfile << "\n";
+    }
+    myfile.close();
 
 }
 

@@ -10,8 +10,8 @@
 
 class Material {
 
-    virtual double calculateIntensity(Ray ray);
-
+public:
+    virtual bool isLightSource() = 0;
 };
 
 

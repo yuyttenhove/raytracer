@@ -7,6 +7,7 @@
 
 
 #include "../util/Vector3D.h"
+#include "../Materials/Material.h"
 
 class Mesh;
 
@@ -18,11 +19,14 @@ class Triangle {
     Vector3D vec2;
     Vector3D normal;
     Vector3D originVec;
-public:
-    const Vector3D &getNormal() const;
 
 public:
+
     Triangle(Mesh *mesh, const Vector3D &vec1, const Vector3D &vec2, const Vector3D &originVec);
+
+    const Vector3D &getNormal() const;
+
+    Material *getMaterial();
 
 };
 

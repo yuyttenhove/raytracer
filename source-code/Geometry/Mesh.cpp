@@ -4,4 +4,14 @@
 
 #include "Mesh.h"
 
-Mesh::Mesh(const vector<Triangle> &triangles) : triangles(triangles) {}
+Material *Mesh::getMaterial() {
+    return material;
+}
+
+Mesh::Mesh(const vector<Triangle> &triangles, Material *material) : triangles(triangles), material(material) {}
+
+Mesh::Mesh() {
+    material = nullptr;
+    triangles = vector<Triangle>();
+}
+

@@ -13,9 +13,15 @@
 class Mesh {
 
     vector<Triangle> triangles;
-
+    Material *material;
 public:
-    Mesh(const vector<Triangle> &triangles);
+
+    Material *getMaterial();
+
+    Mesh();
+
+    Mesh(const vector<Triangle> &triangles, Material *material);
+
 
 };
 
