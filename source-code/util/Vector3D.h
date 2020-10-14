@@ -41,7 +41,7 @@ public:
 
     double dot(Vector3D otherVec) const;
 
-    double length();
+    double length() const;
 
     Vector3D normalize();
 

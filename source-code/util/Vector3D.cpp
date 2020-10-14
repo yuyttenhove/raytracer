@@ -41,7 +41,7 @@ double Vector3D::dot(Vector3D otherVec) const {
     return x * otherVec.x + y * otherVec.y + z * otherVec.z;
 }
 
-double Vector3D::length() {
+double Vector3D::length() const {
     return sqrt(this->dot(*this));
 }
 

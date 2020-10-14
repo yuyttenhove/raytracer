@@ -13,3 +13,7 @@ Triangle::Triangle(Mesh *mesh, const Vector3D &vec1, const Vector3D &vec2, const
     this->normal = vec1.cross(vec2).normalize();
 
 }
+
+const Vector3D &Triangle::getNormal() const {
+    return normal;
+}
