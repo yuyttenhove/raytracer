@@ -4,7 +4,9 @@
 using namespace std;
 
 int main() {
-    Vector3D vector3D = Vector3D(1,2,3);
+
+    int
+    Vector3D vector3D = Vector3D(1, 2, 3);
 
     cout << vector3D.getX() << " " << vector3D.getY() << " " << vector3D.getZ() << endl;
 
