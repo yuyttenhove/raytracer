@@ -20,7 +20,7 @@ class Triangle {
     Vector3D originVec;
 
 public:
-    Triangle(Mesh *mesh, const Vector3D &vec1, const Vector3D &vec2, const Vector3D &normal, const Vector3D &originVec);
+    Triangle(Mesh *mesh, const Vector3D &vec1, const Vector3D &vec2, const Vector3D &originVec);
 
 };
 

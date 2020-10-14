@@ -5,6 +5,6 @@
 #include "TriangleCollection.h"
 
 Triangle TriangleCollection::getClosestTriangle(Ray ray) {
-    return Triangle(nullptr, Vector3D(), Vector3D(), Vector3D(), Vector3D());
+    return Triangle(nullptr, Vector3D(), Vector3D(), Vector3D());
 }
 
