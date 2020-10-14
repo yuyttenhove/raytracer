@@ -3,4 +3,4 @@ project(raytracer)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(raytracer main.cpp)
+add_executable(raytracer source-code/main.cpp)
