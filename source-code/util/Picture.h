@@ -15,6 +15,9 @@ class Picture {
     vector<vector<double>> pixels;
 
 public:
+    Picture(const vector<vector<double>> &pixels);
+
+public:
     void writeToFile(string fileName);
 
 };

@@ -5,5 +5,5 @@
 #include "RayBouncer.h"
 
 Ray RayBouncer::getBounce(Triangle triangle, Ray ray) {
-    return Ray();
+    return ray;
 }

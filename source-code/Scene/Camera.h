@@ -8,10 +8,17 @@
 
 #include "../util/Picture.h"
 #include "../Geometry/TriangleCollection.h"
+#include "../RayUtils/RayIntensityCalculator.h"
 
 class Camera {
     int width;
     int height;
+    Vector3D origin = {0, 0, 0};
+    RayIntensityCalculator rayIntensityCalculator;
+
+
+private:
+    Vector3D getVecToPixel(int i, int j);
 
 public:
     Picture takePicture(TriangleCollection triangleCollection);

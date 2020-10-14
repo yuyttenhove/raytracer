@@ -7,3 +7,5 @@
 void Picture::writeToFile(string fileName) {
 
 }
+
+Picture::Picture(const vector<vector<double>> &pixels) : pixels(pixels) {}
