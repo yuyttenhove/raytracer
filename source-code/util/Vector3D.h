@@ -37,13 +37,11 @@ public:
 
     Vector3D operator+(Vector3D otherVec);
 
-    Vector3D operator*(double scalar);
+    Vector3D operator*(double scalar) const;
 
     double dot(Vector3D otherVec) const;
 
     double length();
-
-    Vector3D scalar(double scalar);
 
     Vector3D normalize();
 
@@ -52,6 +50,8 @@ public:
 };
 
 ostream &operator<<(ostream &os, Vector3D vector);
+
+Vector3D operator*(double scalar, const Vector3D &vector);
 
 
 #endif //RAYTRACER_VECTOR3D_H

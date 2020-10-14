@@ -46,7 +46,7 @@ double Vector3D::length() {
 }
 
 Vector3D Vector3D::normalize() {
-    return (*this) * this->length();
+    return (*this) * (1 / this->length());
 }
 
 
@@ -54,7 +54,7 @@ Vector3D Vector3D::operator+(Vector3D otherVec) {
     return {otherVec.x + x, otherVec.y + y, otherVec.z + z};
 }
 
-Vector3D Vector3D::operator*(double scalar) {
+Vector3D Vector3D::operator*(double scalar) const {
     return {scalar * x, scalar * y, scalar * z};
 }
 
@@ -67,4 +67,8 @@ Vector3D::Vector3D() {
 ostream &operator<<(ostream &os, Vector3D vector) {
     os << "(" << vector.getX() << ',' << vector.getY() << ',' << vector.getZ() << ")";
     return os;
+}
+
+Vector3D operator*(double scalar, const Vector3D &vector) {
+    return vector * scalar;
 }

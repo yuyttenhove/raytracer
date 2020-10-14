@@ -13,7 +13,6 @@ add_executable(
         source-code/Geometry/Triangle.h
         source-code/RayUtils/Ray.cpp
         source-code/RayUtils/Ray.h
-
         source-code/Geometry/TriangleCollection.h
         source-code/RayUtils/RayIntensityCalculator.cpp
         source-code/RayUtils/RayIntensityCalculator.h
@@ -28,4 +27,6 @@ add_executable(
         source-code/util/Picture.h
         source-code/Scene/Scene.cpp
         source-code/Scene/Scene.h
-        source-code/Geometry/TriangleCollection.cpp source-code/Geometry/Mesh.cpp source-code/Geometry/Mesh.h)
+        source-code/Geometry/TriangleCollection.cpp
+        source-code/Geometry/Mesh.cpp source-code/Geometry/Mesh.h
+)
