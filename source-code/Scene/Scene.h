@@ -11,11 +11,16 @@
 
 class Scene {
 
-    MeshCollection triangleCollection;
-    Camera camera;
+    Camera *camera;
 
 public:
-    Scene(MeshCollection triangleCollection, Camera camera);
+    Scene(
+            MeshCollection *meshCollection,
+            int width,
+            int height,
+            int numberOfRaysPerBounce,
+            int bounceDepth
+    );
 
     void render(string fileName);
 };

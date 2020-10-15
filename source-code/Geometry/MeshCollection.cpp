@@ -8,16 +8,18 @@
 
 MeshCollection::MeshCollection(const vector<Mesh *> meshes) : meshes(meshes) {}
 
-Triangle *MeshCollection::getClosestTriangle(Ray *ray) {
+Triangle *MeshCollection::getClosestTriangle(Ray *ray, Vector3D *interSectionPoint) {
     float t = FLT_MAX;
     float pathLength;
     Triangle *closestTriangle = nullptr;
 
+    const Vector3D &origin = ray->getStartPoint();
+    const Vector3D &direction = ray->getDirection();
     for (Mesh *mesh : meshes) {
         for (auto triangle:mesh->getTriangles()) {
             bool intersects = this->rayIntersectsTriangle(
-                    ray->getStartPoint(),
-                    ray->getDirection(),
+                    origin,
+                    direction,
                     triangle,
                     &pathLength
             );
@@ -27,6 +29,10 @@ Triangle *MeshCollection::getClosestTriangle(Ray *ray) {
             }
         }
     }
+
+    if (closestTriangle != nullptr) {
+        *interSectionPoint = origin + direction * t;
+    }
     return closestTriangle;
 }
 
@@ -34,7 +40,7 @@ bool MeshCollection::rayIntersectsTriangle(Vector3D rayOrigin,
                                            Vector3D rayVector,
                                            Triangle *inTriangle,
                                            float *pathLength) {
-    const float EPSILON = 0.0000001;
+    const float EPSILON = 0.000001;
     Vector3D vertex0 = inTriangle->getVertex0();
     Vector3D vertex1 = inTriangle->getVertex1();
     Vector3D vertex2 = inTriangle->getVertex2();

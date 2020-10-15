@@ -5,18 +5,27 @@
 #include "RayIntensityCalculator.h"
 #include "../Geometry/MeshCollection.h"
 
-double RayIntensityCalculator::calculateIntensityRay(Ray *ray, MeshCollection *meshCollection) {
+double RayIntensityCalculator::calculateIntensityRay(Ray *ray) {
 
-    Triangle *triangle = meshCollection->getClosestTriangle(ray);
+    if (ray->getNumberOfBouncesBefore() > bounceDepth) {
+        return 0;
+    }
+
+    Vector3D interSectionPoint = Vector3D();
+    Triangle *triangle = meshCollection->getClosestTriangle(ray, &interSectionPoint);
     if (triangle == nullptr) {
         return 0;
     } else {
-        return triangle->getMesh()->getMaterial()->calculateIntensity(ray, triangle, this);
+        return triangle->getMesh()->getMaterial()->calculateIntensity(ray, triangle, this, &interSectionPoint);
     }
 }
 
-RayIntensityCalculator::RayIntensityCalculator(int numberOfRaysPerBounce, int bounceDepth) {
-    this->numberOfRaysPerBounce = numberOfRaysPerBounce;
-    this->bounceDepth = bounceDepth;
-}
+RayIntensityCalculator::RayIntensityCalculator(
+        int numberOfRaysPerBounce,
+        int bounceDepth,
+        MeshCollection *meshCollection
+) :
+        numberOfRaysPerBounce(numberOfRaysPerBounce),
+        bounceDepth(bounceDepth),
+        meshCollection(meshCollection) {}
 
