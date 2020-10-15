@@ -6,13 +6,15 @@
 
 double RayIntensityCalculator::calculateIntensityRay(Ray ray) {
 
-    Triangle triangle = triangleCollection.getClosestTriangle(ray);
+    Triangle *triangle = triangleCollection.getClosestTriangle(ray);
 
-    if (triangle.getMaterial()->isLightSource()) {
-        return 1;
-    } else {
+    if (triangle == nullptr) {
         return 0;
+    } else if (triangle->getMaterial()->isLightSource()) {
+        return 1;
     }
+
+    return 0;
 }
 
 RayIntensityCalculator::RayIntensityCalculator(

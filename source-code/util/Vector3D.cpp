@@ -50,8 +50,12 @@ Vector3D Vector3D::normalize() {
 }
 
 
-Vector3D Vector3D::operator+(Vector3D otherVec) {
+Vector3D Vector3D::operator+(Vector3D otherVec) const {
     return {otherVec.x + x, otherVec.y + y, otherVec.z + z};
+}
+
+Vector3D Vector3D::operator-(Vector3D otherVec) const {
+    return {x - otherVec.x, y - otherVec.y, z - otherVec.z};
 }
 
 Vector3D Vector3D::operator*(double scalar) const {

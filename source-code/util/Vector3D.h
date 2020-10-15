@@ -35,7 +35,9 @@ public:
 
     void setZ(double z);
 
-    Vector3D operator+(Vector3D otherVec);
+    Vector3D operator+(Vector3D otherVec) const;
+
+    Vector3D operator-(Vector3D otherVec) const;
 
     Vector3D operator*(double scalar) const;
 

@@ -14,15 +14,19 @@ class Mesh;
 class Triangle {
 
     Mesh *mesh;
-
-    Vector3D vec1;
-    Vector3D vec2;
+    Vector3D vertex0;
+    Vector3D vertex1;
+    Vector3D vertex2;
     Vector3D normal;
-    Vector3D originVec;
 
 public:
+    Triangle(Mesh *mesh, const Vector3D &vertex0, const Vector3D &vertex1, const Vector3D &vertex2);
 
-    Triangle(Mesh *mesh, const Vector3D &vec1, const Vector3D &vec2, const Vector3D &originVec);
+    const Vector3D &getVertex0() const;
+
+    const Vector3D &getVertex1() const;
+
+    const Vector3D &getVertex2() const;
 
     const Vector3D &getNormal() const;
 

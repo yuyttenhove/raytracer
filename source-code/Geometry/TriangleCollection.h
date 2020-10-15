@@ -14,9 +14,9 @@ class TriangleCollection {
     vector<Triangle> triangles;
 
 public:
-    Triangle getClosestTriangle(Ray ray);
+    Triangle *getClosestTriangle(Ray ray);
 
-
+    bool rayIntersectsTriangle(Vector3D rayOrigin, Vector3D rayVector, Triangle *inTriangle, float *pathLength);
 };
 
 

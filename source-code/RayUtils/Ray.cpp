@@ -16,3 +16,11 @@ Ray::Ray(const Vector3D &direction, const Vector3D &startPoint, int numberOfBoun
         direction(direction),
         startPoint(startPoint),
         numberOfBouncesBefore(numberOfBouncesBefore) {}
+
+const Vector3D &Ray::getDirection() const {
+    return direction;
+}
+
+const Vector3D &Ray::getStartPoint() const {
+    return startPoint;
+}
