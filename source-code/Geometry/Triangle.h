@@ -7,7 +7,6 @@
 
 
 #include "../util/Vector3D.h"
-#include "../Materials/Material.h"
 
 class Mesh;
 
@@ -30,7 +29,7 @@ public:
 
     const Vector3D &getNormal() const;
 
-    Material *getMaterial();
+    Mesh *getMesh() const;
 
 };
 

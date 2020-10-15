@@ -18,7 +18,7 @@ class MeshCollection {
 public:
     MeshCollection(const vector<Mesh *> meshes);
 
-    Triangle *getClosestTriangle(Ray ray);
+    Triangle *getClosestTriangle(Ray *ray);
 
 private:
     bool rayIntersectsTriangle(Vector3D rayOrigin, Vector3D rayVector, Triangle *inTriangle, float *pathLength);

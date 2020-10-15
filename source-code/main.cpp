@@ -18,22 +18,25 @@ int main() {
     int height = 1000;
 
 
-    EmissiveMaterial emissiveMaterial = EmissiveMaterial(1.0);
-    Mesh mesh = Mesh(&emissiveMaterial);
+    // mesh 1
+    EmissiveMaterial emissiveMaterial1 = EmissiveMaterial(1.0);
+    Mesh mesh1 = Mesh(&emissiveMaterial1);
+    Triangle triangle1 = Triangle(&mesh1, {-2, 2, 4}, {0, 0, 4}, {2, 2, 6});
+    mesh1.addTriangle(&triangle1);
 
-    Triangle triangle1 = Triangle(&mesh, {-2, 2, 5}, {0, 0, 5}, {2, 2, 5});
-    Triangle triangle2 = Triangle(&mesh, {-4, 2, 5}, {1, 0, 5}, {3, 2, 5});
+    // mesh2
+    EmissiveMaterial emissiveMaterial2 = EmissiveMaterial(0.5);
+    Mesh mesh2 = Mesh(&emissiveMaterial2);
+    Triangle triangle2 = Triangle(&mesh2, {-1, 2, 5}, {1, 0, 5}, {3, 2, 5});
+    mesh2.addTriangle(&triangle2);
 
-    vector<Triangle *> triangles{&triangle1, &triangle2};
-    mesh.addTriangles(triangles);
-
-    vector<Mesh *> meshes{&mesh};
-    MeshCollection triangleCollection = MeshCollection(meshes);
+    vector<Mesh *> meshes{&mesh1, &mesh2};
+    MeshCollection meshCollection = MeshCollection(meshes);
 
     const RayIntensityCalculator &calculator = RayIntensityCalculator(numberOfRaysPerBounce, bounceDepth);
     Camera camera = Camera(width, height, calculator);
 
-    Scene scene = Scene(triangleCollection, camera);
+    Scene scene = Scene(meshCollection, camera);
     scene.render(saveLocation);
 
 

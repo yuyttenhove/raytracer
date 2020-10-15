@@ -7,7 +7,7 @@
 
 MeshCollection::MeshCollection(const vector<Mesh *> meshes) : meshes(meshes) {}
 
-Triangle *MeshCollection::getClosestTriangle(Ray ray) {
+Triangle *MeshCollection::getClosestTriangle(Ray *ray) {
     float t = FLT_MAX;
     float pathLength;
     Triangle *closestTriangle = nullptr;
@@ -15,8 +15,8 @@ Triangle *MeshCollection::getClosestTriangle(Ray ray) {
     for (Mesh *mesh : meshes) {
         for (auto triangle:mesh->getTriangles()) {
             bool intersects = this->rayIntersectsTriangle(
-                    ray.getStartPoint(),
-                    ray.getDirection(),
+                    ray->getStartPoint(),
+                    ray->getDirection(),
                     triangle,
                     &pathLength
             );

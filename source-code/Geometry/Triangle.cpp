@@ -10,10 +10,6 @@ const Vector3D &Triangle::getNormal() const {
     return normal;
 }
 
-Material *Triangle::getMaterial() {
-    return mesh->getMaterial();
-}
-
 Triangle::Triangle(Mesh *mesh, const Vector3D &vertex0, const Vector3D &vertex1, const Vector3D &vertex2) :
         mesh(mesh),
         vertex0(vertex0),
@@ -35,5 +31,9 @@ const Vector3D &Triangle::getVertex1() const {
 
 const Vector3D &Triangle::getVertex2() const {
     return vertex2;
+}
+
+Mesh *Triangle::getMesh() const {
+    return mesh;
 }
 

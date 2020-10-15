@@ -19,7 +19,8 @@ Picture Camera::takePicture(MeshCollection triangleCollection) {
             }
             Vector3D vectorToPixel = getVecToPixel(i, j);
             Ray ray = Ray(vectorToPixel, origin);
-            intensityValues[height - j - 1][i] = rayIntensityCalculator.calculateIntensityRay(ray, &triangleCollection);
+            intensityValues[height - j - 1][i] = rayIntensityCalculator.calculateIntensityRay(&ray,
+                                                                                              &triangleCollection);
         }
     }
 
