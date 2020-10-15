@@ -19,24 +19,31 @@ int main() {
     int height = 1000;
 
 
-    // mesh 1
-    EmissiveMaterial emissiveMaterial1 = EmissiveMaterial(1.0);
-    Mesh emissiveMesh1 = Mesh(&emissiveMaterial1);
-    Triangle triangle1 = Triangle(&emissiveMesh1, {-2, 2, 4}, {0, -0.5, 4}, {2, 2, 6});
-    emissiveMesh1.addTriangle(&triangle1);
+//    // mesh 1
+//    EmissiveMaterial emissiveMaterial1 = EmissiveMaterial(1.0);
+//    Mesh emissiveMesh1 = Mesh(&emissiveMaterial1);
+//    Triangle triangle1 = Triangle(&emissiveMesh1, {-2, 2, 4}, {0, -0.5, 4}, {2, 2, 6});
+//    emissiveMesh1.addTriangle(&triangle1);
+//
+//    // mesh2
+//    EmissiveMaterial emissiveMaterial2 = EmissiveMaterial(0.5);
+//    Mesh emissiveMesh2 = Mesh(&emissiveMaterial2);
+//    Triangle triangle2 = Triangle(&emissiveMesh2, {-1, 2, 5}, {1, 0, 5}, {3, 2, 5});
+//    emissiveMesh2.addTriangle(&triangle2);
 
-    // mesh2
-    EmissiveMaterial emissiveMaterial2 = EmissiveMaterial(0.5);
-    Mesh emissiveMesh2 = Mesh(&emissiveMaterial2);
-    Triangle triangle2 = Triangle(&emissiveMesh2, {-1, 2, 5}, {1, 0, 5}, {3, 2, 5});
-    emissiveMesh2.addTriangle(&triangle2);
+    EmissiveMaterial emissiveMaterial = EmissiveMaterial(1.0);
+    Mesh emissiveMesh = Mesh(&emissiveMaterial);
+    Triangle emissiveTriangle = Triangle(&emissiveMesh, {-500, 0, 5}, {500, -500, 5}, {500, 500, 5});
+    emissiveMesh.addTriangle(&emissiveTriangle);
+
 
     ReflectiveMaterial reflectiveMaterial = ReflectiveMaterial(0.5);
     Mesh reflectiveMesh = Mesh(&reflectiveMaterial);
     Triangle reflectiveTriangle = Triangle(&reflectiveMesh, {0, -0.5, -5000}, {5000, -0.5, 5000}, {-5000, -0.5, 5000});
     reflectiveMesh.addTriangle(&reflectiveTriangle);
 
-    vector<Mesh *> meshes{&emissiveMesh1, &emissiveMesh2, &reflectiveMesh};
+
+    vector<Mesh *> meshes{&emissiveMesh, &reflectiveMesh};
     MeshCollection meshCollection = MeshCollection(meshes);
 
     Scene scene = Scene(&meshCollection, width, height, numberOfRaysPerBounce, bounceDepth);

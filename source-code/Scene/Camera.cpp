@@ -22,7 +22,6 @@ Picture Camera::takePicture() {
             intensityValues[height - j - 1][i] = rayIntensityCalculator.calculateIntensityRay(&ray);
         }
     }
-
     return Picture(intensityValues);
 }
 

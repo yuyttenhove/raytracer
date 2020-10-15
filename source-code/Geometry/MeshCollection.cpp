@@ -39,7 +39,7 @@ bool MeshCollection::rayIntersectsTriangle(Vector3D rayOrigin,
                                            Vector3D rayVector,
                                            Triangle *inTriangle,
                                            float *pathLength) {
-    const float EPSILON = 0.0000001;
+    const float EPSILON = 0.000001;
     Vector3D vertex0 = inTriangle->getVertex0();
     Vector3D vertex1 = inTriangle->getVertex1();
     Vector3D vertex2 = inTriangle->getVertex2();
