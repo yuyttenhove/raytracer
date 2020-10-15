@@ -1,6 +1,7 @@
 //
 
 #include "MeshCollection.h"
+#include <cfloat>
 
 //
 // Created by ellio on 14-10-2020.
