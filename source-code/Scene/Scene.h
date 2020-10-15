@@ -11,11 +11,11 @@
 
 class Scene {
 
-    MeshCollection triangleCollection;
+    MeshCollection meshCollection;
     Camera camera;
 
 public:
-    Scene(MeshCollection triangleCollection, Camera camera);
+    Scene(MeshCollection meshCollection, Camera camera);
 
     void render(string fileName);
 };

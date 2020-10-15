@@ -5,11 +5,11 @@
 #include "Scene.h"
 #include <string>
 
-Scene::Scene(MeshCollection triangleCollection, Camera camera) :
-        triangleCollection(triangleCollection),
+Scene::Scene(MeshCollection meshCollection, Camera camera) :
+        meshCollection(meshCollection),
         camera(camera) {}
 
 void Scene::render(string fileName) {
-    Picture picture = camera.takePicture(triangleCollection);
+    Picture picture = camera.takePicture(&meshCollection);
     picture.writeToFile(fileName);
 }
