@@ -12,17 +12,24 @@
 
 class Mesh {
 
-    vector<Triangle> triangles;
+    vector<Triangle *> triangles;
+private:
     Material *material;
-public:
 
+public:
     Mesh();
 
     Mesh(Material *material);
 
-    Mesh(const vector<Triangle> &triangles, Material *material);
+    Mesh(const vector<Triangle *> &triangles, Material *material);
+
+    vector<Triangle *> getTriangles();
 
     Material *getMaterial();
+
+    void addTriangle(Triangle *triangle);
+
+    void addTriangles(vector<Triangle *> newTriangles);
 
 
 };

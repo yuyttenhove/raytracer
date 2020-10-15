@@ -1,35 +1,38 @@
 //
 
-#include "TriangleCollection.h"
+#include "MeshCollection.h"
 
 //
 // Created by ellio on 14-10-2020.
 
-TriangleCollection::TriangleCollection(const vector<Triangle *> triangles) : triangles(triangles) {}
+MeshCollection::MeshCollection(const vector<Mesh *> meshes) : meshes(meshes) {}
 
-Triangle *TriangleCollection::getClosestTriangle(Ray ray) {
+Triangle *MeshCollection::getClosestTriangle(Ray ray) {
     float t = FLT_MAX;
     float pathLength;
     Triangle *closestTriangle = nullptr;
-    for (auto triangle : triangles) {
-        bool intersects = this->rayIntersectsTriangle(
-                ray.getStartPoint(),
-                ray.getDirection(),
-                triangle,
-                &pathLength
-        );
-        if (intersects && pathLength < t) {
-            t = pathLength;
-            closestTriangle = triangle;
+
+    for (Mesh *mesh : meshes) {
+        for (auto triangle:mesh->getTriangles()) {
+            bool intersects = this->rayIntersectsTriangle(
+                    ray.getStartPoint(),
+                    ray.getDirection(),
+                    triangle,
+                    &pathLength
+            );
+            if (intersects && pathLength < t) {
+                t = pathLength;
+                closestTriangle = triangle;
+            }
         }
     }
     return closestTriangle;
 }
 
-bool TriangleCollection::rayIntersectsTriangle(Vector3D rayOrigin,
-                                               Vector3D rayVector,
-                                               Triangle *inTriangle,
-                                               float *pathLength) {
+bool MeshCollection::rayIntersectsTriangle(Vector3D rayOrigin,
+                                           Vector3D rayVector,
+                                           Triangle *inTriangle,
+                                           float *pathLength) {
     const float EPSILON = 0.0000001;
     Vector3D vertex0 = inTriangle->getVertex0();
     Vector3D vertex1 = inTriangle->getVertex1();

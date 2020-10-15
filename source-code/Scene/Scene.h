@@ -6,16 +6,16 @@
 #define RAYTRACER_SCENE_H
 
 
-#include "../Geometry/TriangleCollection.h"
+#include "../Geometry/MeshCollection.h"
 #include "Camera.h"
 
 class Scene {
 
-    TriangleCollection triangleCollection;
+    MeshCollection triangleCollection;
     Camera camera;
 
 public:
-    Scene(TriangleCollection triangleCollection, Camera camera);
+    Scene(MeshCollection triangleCollection, Camera camera);
 
     void render(string fileName);
 };

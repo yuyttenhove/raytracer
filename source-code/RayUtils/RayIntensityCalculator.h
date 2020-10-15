@@ -7,7 +7,7 @@
 
 
 #include "Ray.h"
-#include "../Geometry/TriangleCollection.h"
+#include "../Geometry/MeshCollection.h"
 #include "RayBouncer.h"
 
 class RayIntensityCalculator {
@@ -19,7 +19,7 @@ public:
 
     RayIntensityCalculator(int numberOfRaysPerBounce, int bounceDepth);
 
-    double calculateIntensityRay(Ray ray, TriangleCollection *triangleCollection);
+    double calculateIntensityRay(Ray ray, MeshCollection *triangleCollection);
 
 };
 

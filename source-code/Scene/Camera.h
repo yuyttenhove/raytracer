@@ -7,7 +7,7 @@
 
 
 #include "../util/Picture.h"
-#include "../Geometry/TriangleCollection.h"
+#include "../Geometry/MeshCollection.h"
 #include "../RayUtils/RayIntensityCalculator.h"
 
 class Camera {
@@ -20,10 +20,13 @@ class Camera {
 private:
     Vector3D getVecToPixel(int i, int j);
 
+    void printProgress(int row, int column);
+
 public:
     Camera(int width, int height, const RayIntensityCalculator &rayIntensityCalculator);
 
-    Picture takePicture(TriangleCollection triangleCollection);
+    Picture takePicture(MeshCollection triangleCollection);
+
 };
 
 

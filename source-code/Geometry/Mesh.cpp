@@ -8,14 +8,26 @@ Material *Mesh::getMaterial() {
     return material;
 }
 
-Mesh::Mesh(const vector<Triangle> &triangles, Material *material) : triangles(triangles), material(material) {}
+Mesh::Mesh(const vector<Triangle *> &triangles, Material *material) : triangles(triangles), material(material) {}
 
 Mesh::Mesh(Material *material) : material(material) {
-    triangles = vector<Triangle>();
+    triangles = vector<Triangle *>();
 }
 
 Mesh::Mesh() {
     material = nullptr;
-    triangles = vector<Triangle>();
+    triangles = vector<Triangle *>();
+}
+
+vector<Triangle *> Mesh::getTriangles() {
+    return triangles;
+}
+
+void Mesh::addTriangle(Triangle *triangle) {
+    triangles.push_back(triangle);
+}
+
+void Mesh::addTriangles(vector<Triangle *> newTriangles) {
+    this->triangles.insert(this->triangles.end(), newTriangles.begin(), newTriangles.end());
 }
 

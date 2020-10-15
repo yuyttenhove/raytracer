@@ -5,7 +5,7 @@
 #include "Scene.h"
 #include <string>
 
-Scene::Scene(TriangleCollection triangleCollection, Camera camera) :
+Scene::Scene(MeshCollection triangleCollection, Camera camera) :
         triangleCollection(triangleCollection),
         camera(camera) {}
 

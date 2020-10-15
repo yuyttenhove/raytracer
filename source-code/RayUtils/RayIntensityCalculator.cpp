@@ -4,7 +4,7 @@
 
 #include "RayIntensityCalculator.h"
 
-double RayIntensityCalculator::calculateIntensityRay(Ray ray, TriangleCollection *triangleCollection) {
+double RayIntensityCalculator::calculateIntensityRay(Ray ray, MeshCollection *triangleCollection) {
 
     Triangle *triangle = triangleCollection->getClosestTriangle(ray);
 
