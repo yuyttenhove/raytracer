@@ -29,3 +29,7 @@ RayIntensityCalculator::RayIntensityCalculator(
         bounceDepth(bounceDepth),
         meshCollection(meshCollection) {}
 
+int RayIntensityCalculator::getNumberOfRaysPerBounce() const {
+    return numberOfRaysPerBounce;
+}
+
