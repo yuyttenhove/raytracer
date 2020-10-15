@@ -25,7 +25,7 @@ private:
 public:
     Camera(int width, int height, const RayIntensityCalculator &rayIntensityCalculator);
 
-    Picture takePicture(MeshCollection *meshCollection);
+    Picture takePicture();
 
 };
 

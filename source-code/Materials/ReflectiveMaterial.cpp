@@ -19,5 +19,5 @@ ReflectiveMaterial::calculateIntensity(
     Vector3D reflectedDirection = direction - 2 * (direction.dot(normal)) * normal;
 
     Ray reflectedRay = Ray(reflectedDirection, *interSectionPoint, numberOfBounces + 1);
-    return rayIntensityCalculator->calculateIntensityRay(&reflectedRay, nullptr) * shininess;
+    return rayIntensityCalculator->calculateIntensityRay(&reflectedRay) * shininess;
 }

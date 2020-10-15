@@ -5,11 +5,17 @@
 #include "Scene.h"
 #include <string>
 
-Scene::Scene(MeshCollection meshCollection, Camera camera) :
-        meshCollection(meshCollection),
-        camera(camera) {}
-
 void Scene::render(string fileName) {
-    Picture picture = camera.takePicture(&meshCollection);
+    Picture picture = camera->takePicture();
     picture.writeToFile(fileName);
+}
+
+Scene::Scene(MeshCollection *meshCollection, int width, int height, int numberOfRaysPerBounce, int bounceDepth) {
+    RayIntensityCalculator rayIntensityCalculator = RayIntensityCalculator(
+            numberOfRaysPerBounce,
+            bounceDepth,
+            meshCollection
+    );
+
+    camera = new Camera(width, height, rayIntensityCalculator);
 }

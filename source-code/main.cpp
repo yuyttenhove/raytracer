@@ -33,10 +33,7 @@ int main() {
     vector<Mesh *> meshes{&mesh1, &mesh2};
     MeshCollection meshCollection = MeshCollection(meshes);
 
-    const RayIntensityCalculator &calculator = RayIntensityCalculator(numberOfRaysPerBounce, bounceDepth);
-    Camera camera = Camera(width, height, calculator);
-
-    Scene scene = Scene(meshCollection, camera);
+    Scene scene = Scene(&meshCollection, width, height, numberOfRaysPerBounce, bounceDepth);
     scene.render(saveLocation);
 
 

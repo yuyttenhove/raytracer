@@ -6,7 +6,7 @@
 #include "../util/MatrixUtils.h"
 #include <vector>
 
-Picture Camera::takePicture(MeshCollection *meshCollection) {
+Picture Camera::takePicture() {
 
     vector<vector<double>> intensityValues = MatrixUtils::initializeMatrixZero(height, width);
     int counter = 0;
@@ -19,7 +19,7 @@ Picture Camera::takePicture(MeshCollection *meshCollection) {
             }
             Vector3D vectorToPixel = getVecToPixel(i, j);
             Ray ray = Ray(vectorToPixel, origin);
-            intensityValues[height - j - 1][i] = rayIntensityCalculator.calculateIntensityRay(&ray, meshCollection);
+            intensityValues[height - j - 1][i] = rayIntensityCalculator.calculateIntensityRay(&ray);
         }
     }
 
