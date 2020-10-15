@@ -19,6 +19,8 @@ public:
 
     Matrix3x3(double sineTheta, double cosineTheta, Vector3D axis);
 
+    void setElement(int i, int j, double value);
+
     Vector3D dot(Vector3D vec);
 
 };

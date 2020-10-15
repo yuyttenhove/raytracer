@@ -19,11 +19,21 @@ double DiffuseMaterial::calculateIntensity(
     int bouncesBefore = ray->getNumberOfBouncesBefore();
     Vector3D normal = triangle->getNormal();
 
-    Vector3D rotationAxis = normal.cross({0, 0, 1}).normalize();
-    double cosTheta = normal.getZ();
-    double sinTheta = sqrt((1 - cosTheta) * (1 + cosTheta));
+    Vector3D rotationAxis = normal.cross({0, 0, 1});
 
-    Matrix3x3 rotationMatrix = Matrix3x3(sinTheta, cosTheta, rotationAxis);
+    Matrix3x3 rotationMatrix;
+    if (rotationAxis.length() < 0.0001) {
+        double res = normal.dot({0, 0, 1});
+        rotationMatrix = Matrix3x3();
+        rotationMatrix.setElement(0, 0, 1);
+        rotationMatrix.setElement(1, 1, 1);
+        rotationMatrix.setElement(2, 2, res);
+    } else {
+        double cosTheta = normal.getZ();
+        double sinTheta = sqrt((1 - cosTheta) * (1 + cosTheta));
+        rotationMatrix = Matrix3x3(sinTheta, cosTheta, rotationAxis);
+    }
+
 
     double sumIntensities = 0.0;
     for (int i = 0; i < raysPerBounce; i++) {
@@ -32,7 +42,10 @@ double DiffuseMaterial::calculateIntensity(
         Vector3D rotatedVector = rotationMatrix.dot(randomVectorInHalveUnitSphere);
 
         Ray bounce = Ray(rotatedVector, *interSectionPoint, bouncesBefore + 1);
-        sumIntensities += rayIntensityCalculator->calculateIntensityRay(&bounce) * dalembertFactor;
+        double intensityRay = rayIntensityCalculator->calculateIntensityRay(&bounce);
+//        sumIntensities += intensityRay * dalembertFactor;
+        sumIntensities += intensityRay;
     }
+
     return sumIntensities * albedo / raysPerBounce;
 }
