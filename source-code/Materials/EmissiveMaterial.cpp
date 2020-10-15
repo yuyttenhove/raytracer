@@ -8,10 +8,12 @@
 
 EmissiveMaterial::EmissiveMaterial(double intensity) : intensity(intensity) {}
 
-double EmissiveMaterial::calculateIntensity(
+double
+EmissiveMaterial::calculateIntensity(
         Ray *ray,
         Triangle *triangle,
-        RayIntensityCalculator *rayIntensityCalculator
+        RayIntensityCalculator *rayIntensityCalculator,
+        Vector3D *interSectionPoint
 ) {
     return intensity;
 }

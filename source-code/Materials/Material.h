@@ -14,7 +14,12 @@ class Material {
 
 public:
 
-    virtual double calculateIntensity(Ray *ray, Triangle *triangle, RayIntensityCalculator *rayIntensityCalculator) = 0;
+    virtual double calculateIntensity(
+            Ray *ray,
+            Triangle *triangle,
+            RayIntensityCalculator *rayIntensityCalculator,
+            Vector3D *interSectionPoint
+    ) = 0;
 };
 
 

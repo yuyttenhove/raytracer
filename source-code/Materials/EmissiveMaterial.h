@@ -16,7 +16,12 @@ public:
 
     EmissiveMaterial(double intensity);
 
-    double calculateIntensity(Ray *ray, Triangle *triangle, RayIntensityCalculator *rayIntensityCalculator) override;
+    double calculateIntensity(
+            Ray *ray,
+            Triangle *triangle,
+            RayIntensityCalculator *rayIntensityCalculator,
+            Vector3D *interSectionPoint
+    ) override;
 };
 
 

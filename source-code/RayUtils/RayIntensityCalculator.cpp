@@ -7,11 +7,12 @@
 
 double RayIntensityCalculator::calculateIntensityRay(Ray *ray, MeshCollection *meshCollection) {
 
-    Triangle *triangle = meshCollection->getClosestTriangle(ray);
+    Vector3D interSectionPoint = Vector3D();
+    Triangle *triangle = meshCollection->getClosestTriangle(ray, &interSectionPoint);
     if (triangle == nullptr) {
         return 0;
     } else {
-        return triangle->getMesh()->getMaterial()->calculateIntensity(ray, triangle, this);
+        return triangle->getMesh()->getMaterial()->calculateIntensity(ray, triangle, this, &interSectionPoint);
     }
 }
 
