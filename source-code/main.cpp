@@ -1,4 +1,3 @@
-#include <iostream>
 #include "util/Vector3D.h"
 #include "Geometry/Triangle.h"
 #include "Geometry/MeshCollection.h"
