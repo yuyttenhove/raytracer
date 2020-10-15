@@ -10,6 +10,10 @@ Material *Mesh::getMaterial() {
 
 Mesh::Mesh(const vector<Triangle> &triangles, Material *material) : triangles(triangles), material(material) {}
 
+Mesh::Mesh(Material *material) : material(material) {
+    triangles = vector<Triangle>();
+}
+
 Mesh::Mesh() {
     material = nullptr;
     triangles = vector<Triangle>();

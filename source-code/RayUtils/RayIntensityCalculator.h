@@ -12,22 +12,14 @@
 
 class RayIntensityCalculator {
 
-    TriangleCollection triangleCollection;
-    RayBouncer rayBouncer;
     int numberOfRaysPerBounce;
     int bounceDepth;
 
 public:
 
-    RayIntensityCalculator(
-            TriangleCollection triangleCollection,
-            RayBouncer rayBouncer,
-            int numberOfRaysPerBounce,
-            int bounceDepth
-    );
+    RayIntensityCalculator(int numberOfRaysPerBounce, int bounceDepth);
 
-
-    double calculateIntensityRay(Ray ray);
+    double calculateIntensityRay(Ray ray, TriangleCollection *triangleCollection);
 
 };
 

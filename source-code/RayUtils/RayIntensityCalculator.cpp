@@ -4,9 +4,9 @@
 
 #include "RayIntensityCalculator.h"
 
-double RayIntensityCalculator::calculateIntensityRay(Ray ray) {
+double RayIntensityCalculator::calculateIntensityRay(Ray ray, TriangleCollection *triangleCollection) {
 
-    Triangle *triangle = triangleCollection.getClosestTriangle(ray);
+    Triangle *triangle = triangleCollection->getClosestTriangle(ray);
 
     if (triangle == nullptr) {
         return 0;
@@ -17,14 +17,7 @@ double RayIntensityCalculator::calculateIntensityRay(Ray ray) {
     return 0;
 }
 
-RayIntensityCalculator::RayIntensityCalculator(
-        TriangleCollection triangleCollection,
-        RayBouncer rayBouncer,
-        int numberOfRaysPerBounce,
-        int bounceDepth
-) {
-    this->triangleCollection = triangleCollection;
-    this->rayBouncer = rayBouncer;
+RayIntensityCalculator::RayIntensityCalculator(int numberOfRaysPerBounce, int bounceDepth) {
     this->numberOfRaysPerBounce = numberOfRaysPerBounce;
     this->bounceDepth = bounceDepth;
 }

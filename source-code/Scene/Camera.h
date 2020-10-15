@@ -21,6 +21,8 @@ private:
     Vector3D getVecToPixel(int i, int j);
 
 public:
+    Camera(int width, int height, const RayIntensityCalculator &rayIntensityCalculator);
+
     Picture takePicture(TriangleCollection triangleCollection);
 };
 

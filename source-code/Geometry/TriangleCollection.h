@@ -11,9 +11,12 @@
 
 class TriangleCollection {
 
-    vector<Triangle> triangles;
+    vector<Triangle *> triangles;
 
 public:
+
+    TriangleCollection(const vector<Triangle *> triangles);
+
     Triangle *getClosestTriangle(Ray ray);
 
     bool rayIntersectsTriangle(Vector3D rayOrigin, Vector3D rayVector, Triangle *inTriangle, float *pathLength);

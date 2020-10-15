@@ -1,10 +1,13 @@
 //
-// Created by ellio on 14-10-2020.
-//
 
 #include "TriangleCollection.h"
 
-Triangle * TriangleCollection::getClosestTriangle(Ray ray) {
+//
+// Created by ellio on 14-10-2020.
+
+TriangleCollection::TriangleCollection(const vector<Triangle *> triangles) : triangles(triangles) {}
+
+Triangle *TriangleCollection::getClosestTriangle(Ray ray) {
     float t = FLT_MAX;
     float pathLength;
     Triangle *closestTriangle = nullptr;
@@ -12,17 +15,16 @@ Triangle * TriangleCollection::getClosestTriangle(Ray ray) {
         bool intersects = this->rayIntersectsTriangle(
                 ray.getStartPoint(),
                 ray.getDirection(),
-                &triangle,
+                triangle,
                 &pathLength
         );
         if (intersects && pathLength < t) {
             t = pathLength;
-            closestTriangle = &triangle;
+            closestTriangle = triangle;
         }
     }
     return closestTriangle;
 }
-
 
 bool TriangleCollection::rayIntersectsTriangle(Vector3D rayOrigin,
                                                Vector3D rayVector,

@@ -11,7 +11,7 @@ void Picture::writeToFile(string fileName) {
     myfile.open(fileName);
     for (const auto &row:pixels) {
         for (auto pixel:row) {
-            myfile << pixel << "\t";
+            myfile << pixel << " ";
         }
         myfile << "\n";
     }
