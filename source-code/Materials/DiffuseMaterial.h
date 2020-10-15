@@ -13,7 +13,6 @@ class DiffuseMaterial : public Material {
     double albedo;
 
 public:
-
     DiffuseMaterial(double albedo);
 
     double calculateIntensity(

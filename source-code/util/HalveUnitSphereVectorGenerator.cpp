@@ -13,8 +13,8 @@ Vector3D HalveUnitSphereVectorGenerator::generateVectorHalveUnitSphere() {
     std::default_random_engine generator;
     std::uniform_real_distribution<double> distribution(0.0, 1.0);
 
-    double random1 = distribution(generator);
-    double random2 = distribution(generator);
+    double random1 = rand() / (RAND_MAX + 1.);
+    double random2 = rand() / (RAND_MAX + 1.);
 
     double phi = 2 * M_PI * random1;
     double cosineTheta = random2;
