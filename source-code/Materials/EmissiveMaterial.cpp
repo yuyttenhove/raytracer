@@ -3,10 +3,16 @@
 //
 
 #include "EmissiveMaterial.h"
+#include "../RayUtils/RayIntensityCalculator.h"
 
 
 EmissiveMaterial::EmissiveMaterial(double intensity) : intensity(intensity) {}
 
-bool EmissiveMaterial::isLightSource() {
-    return true;
+double EmissiveMaterial::calculateIntensity(
+        Ray *ray,
+        Triangle *triangle,
+        RayIntensityCalculator *rayIntensityCalculator
+) {
+    return intensity;
 }
+

@@ -7,11 +7,14 @@
 
 
 #include "../RayUtils/Ray.h"
+#include "../Geometry/Triangle.h"
+#include "../RayUtils/RayIntensityCalculator.h"
 
 class Material {
 
 public:
-    virtual bool isLightSource() = 0;
+
+    virtual double calculateIntensity(Ray *ray, Triangle *triangle, RayIntensityCalculator *rayIntensityCalculator) = 0;
 };
 
 

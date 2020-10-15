@@ -8,12 +8,12 @@
 
 #include <vector>
 #include "Triangle.h"
+#include "../Materials/Material.h"
 
 
 class Mesh {
 
     vector<Triangle *> triangles;
-private:
     Material *material;
 
 public:

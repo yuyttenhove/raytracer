@@ -3,18 +3,16 @@
 //
 
 #include "RayIntensityCalculator.h"
+#include "../Geometry/MeshCollection.h"
 
-double RayIntensityCalculator::calculateIntensityRay(Ray ray, MeshCollection *triangleCollection) {
+double RayIntensityCalculator::calculateIntensityRay(Ray *ray, MeshCollection *meshCollection) {
 
-    Triangle *triangle = triangleCollection->getClosestTriangle(ray);
-
+    Triangle *triangle = meshCollection->getClosestTriangle(ray);
     if (triangle == nullptr) {
         return 0;
-    } else if (triangle->getMaterial()->isLightSource()) {
-        return 1;
+    } else {
+        return triangle->getMesh()->getMaterial()->calculateIntensity(ray, triangle, this);
     }
-
-    return 0;
 }
 
 RayIntensityCalculator::RayIntensityCalculator(int numberOfRaysPerBounce, int bounceDepth) {
