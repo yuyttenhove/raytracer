@@ -17,16 +17,21 @@ Triangle *MeshCollection::getClosestTriangle(Ray *ray, Vector3D *interSectionPoi
     const Vector3D &direction = ray->getDirection();
     for (Mesh *mesh : meshes) {
         for (auto triangle:mesh->getTriangles()) {
-            bool intersects = this->rayIntersectsTriangle(
-                    origin,
-                    direction,
-                    triangle,
-                    &pathLength
-            );
-            if (intersects && pathLength < t) {
-                t = pathLength;
-                closestTriangle = triangle;
+            bool triangleFacesRay = triangle->getNormal().dot(ray->getDirection()) < 0;
+
+            if (triangleFacesRay) {
+                bool intersects = this->rayIntersectsTriangle(
+                        origin,
+                        direction,
+                        triangle,
+                        &pathLength
+                );
+                if (intersects && pathLength < t) {
+                    t = pathLength;
+                    closestTriangle = triangle;
+                }
             }
+
         }
     }
 
