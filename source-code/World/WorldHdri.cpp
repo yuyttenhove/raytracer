@@ -27,5 +27,5 @@ double WorldHdri::getIntensity(Vector3D direction) {
     double rel_y = (1 - cosTheta) / 2;
     int row = (int)round(rel_y * hdriImage.rows);
     int col = (int)round(rel_x * hdriImage.cols);
-    return (double)hdriImage.at<char>(row, col) / 255;
+    return (double)hdriImage.at<uchar>(row, col) / 255;
 }
