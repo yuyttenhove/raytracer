@@ -13,8 +13,8 @@ WorldHdri::WorldHdri(const string& filename) {
 
 cv::Mat WorldHdri::loadHdri(const string& filename) {
     cv::Mat img =  cv::imread(filename, cv::IMREAD_GRAYSCALE);
-    cv::imshow("Display window", img);
-    cv::waitKey(0);
+//    cv::imshow("Display window", img);
+//    cv::waitKey(0);
     return img;
 }
 
@@ -22,7 +22,7 @@ double WorldHdri::getIntensity(Vector3D direction) {
     direction = direction.normalize();
     double cosTheta = direction.getZ();
     double phi = atan2(direction.getY(), direction.getX());
-    phi = phi > 0 ? phi : phi + M_PI;
+    phi = phi > 0 ? phi : phi + 2 * M_PI;
     double rel_x = phi / (2 * M_PI);
     double rel_y = (1 - cosTheta) / 2;
     int row = (int)round(rel_y * hdriImage.rows);

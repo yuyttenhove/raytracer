@@ -30,20 +30,23 @@ int main() {
     string hdri_filename = "/home/yolan/dev/raytracer/source-code/World/sunflowers_4k.png";
     WorldHdri world = WorldHdri(hdri_filename);
 
-    // light
-    EmissiveMaterial emissiveMaterial = EmissiveMaterial(1.0);
-    Mesh emissiveMesh = Mesh(&emissiveMaterial);
-    Triangle triangle2 = Triangle(&emissiveMesh, {1, -1, 1}, {1, 5, 3}, {1, -1, 5});
-    emissiveMesh.addTriangle(&triangle2);
+//    // light
+//    EmissiveMaterial emissiveMaterial = EmissiveMaterial(1.0);
+//    Mesh emissiveMesh = Mesh(&emissiveMaterial);
+//    Triangle triangle2 = Triangle(&emissiveMesh, {1, -1, 1}, {1, 5, 3}, {1, -1, 5});
+//    emissiveMesh.addTriangle(&triangle2);
+//
+//    // floor
+//    DiffuseMaterial diffuseMaterial = DiffuseMaterial(.75);
+//    Mesh diffuseMesh = Mesh(&diffuseMaterial);
+//    Triangle diffuseTriangle = Triangle(&diffuseMesh, {-100, 0, -1}, {100, 100, -1}, {100, 100, -1});
+//    diffuseMesh.addTriangle(&diffuseTriangle);
+//
+//
+//    vector<Mesh *> meshes{&emissiveMesh, &diffuseMesh};
+//    MeshCollection meshCollection = MeshCollection(meshes);
 
-    // floor
-    DiffuseMaterial diffuseMaterial = DiffuseMaterial(.75);
-    Mesh diffuseMesh = Mesh(&diffuseMaterial);
-    Triangle diffuseTriangle = Triangle(&diffuseMesh, {100, -1, 100}, {-100, -1, 100}, {0, -1, -100});
-    diffuseMesh.addTriangle(&diffuseTriangle);
-
-
-    vector<Mesh *> meshes{&emissiveMesh, &diffuseMesh};
+    vector<Mesh *> meshes{};
     MeshCollection meshCollection = MeshCollection(meshes);
 
     Scene scene = Scene(&meshCollection, &world, width, height, numberOfRaysPerBounce, bounceDepth);
