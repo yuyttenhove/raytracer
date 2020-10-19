@@ -29,12 +29,12 @@ int main() {
     // mesh2
     EmissiveMaterial emissiveMaterial2 = EmissiveMaterial(1.0);
     Mesh emissiveMesh2 = Mesh(&emissiveMaterial2);
-    Triangle triangle2 = Triangle(&emissiveMesh2, {-1, 2, 5}, {1, 0, 5}, {3, 2, 5});
+    Triangle triangle2 = Triangle(&emissiveMesh2, {-0, -5000, -0.01}, {5000, -5000, -0.01}, {0, 5000, -0.01});
     emissiveMesh2.addTriangle(&triangle2);
 
     DiffuseMaterial diffuseMaterial = DiffuseMaterial(1.0);
     Mesh diffuseMesh = Mesh(&diffuseMaterial);
-    Triangle diffuseTriangle = Triangle(&diffuseMesh, {0, -0.5, -5000}, {5000, -0.5, 5000}, {-5000, -0.5, 5000});
+    Triangle diffuseTriangle = Triangle(&diffuseMesh, {2, -2, 0.01}, {-2, -2, 0.01}, {0, 2, 0.01});
     diffuseMesh.addTriangle(&diffuseTriangle);
 
 
