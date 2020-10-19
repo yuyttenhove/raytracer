@@ -5,17 +5,11 @@
 #ifndef RAYTRACER_WORLD_H
 #define RAYTRACER_WORLD_H
 
-
 #include "../util/Vector3D.h"
 
 class World {
-    double intensity;
-
 public:
-    World(double intensity);
-
-    double getIntensity(Vector3D direction);
+    virtual double getIntensity(Vector3D direction) = 0;
 };
-
 
 #endif //RAYTRACER_WORLD_H

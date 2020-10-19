@@ -10,6 +10,7 @@
 #include "Materials/ReflectiveMaterial.h"
 #include "util/Matrix3x3.h"
 #include "Materials/DiffuseMaterial.h"
+#include "World/WorldHdri.h"
 #include <cmath>
 #include <random>
 
@@ -26,7 +27,8 @@ int main() {
 
 
     // world
-    World world = World(0.2);
+    string hdri_filename = "/home/yolan/dev/raytracer/source-code/World/sunflowers_4k.png";
+    WorldHdri world = WorldHdri(hdri_filename);
 
     // light
     EmissiveMaterial emissiveMaterial = EmissiveMaterial(1.0);

@@ -8,7 +8,7 @@
 
 #include "Ray.h"
 #include "RayBouncer.h"
-#include "../Scene/World.h"
+#include "../World/WorldConstantIntensity.h"
 
 class MeshCollection;
 
