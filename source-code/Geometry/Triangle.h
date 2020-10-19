@@ -7,6 +7,7 @@
 
 
 #include "../util/Vector3D.h"
+#include "../util/Matrix3x3.h"
 
 class Mesh;
 
@@ -28,6 +29,12 @@ public:
     const Vector3D &getVertex2() const;
 
     const Vector3D &getNormal() const;
+
+    void translate(Vector3D translation);
+
+    void rotate(Matrix3x3 rotationMatrix);
+
+    void scale(double scale);
 
     Mesh *getMesh() const;
 

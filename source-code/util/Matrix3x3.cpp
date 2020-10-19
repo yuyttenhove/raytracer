@@ -9,6 +9,8 @@ Matrix3x3::Matrix3x3() {
     matrix = MatrixUtils::initializeMatrixZero(3, 3);
 }
 
+Matrix3x3::Matrix3x3(double theta, Vector3D axis) : Matrix3x3(sin(theta), cos(theta), axis){}
+
 Matrix3x3::Matrix3x3(double sineTheta, double cosineTheta, Vector3D axis) {
     matrix = MatrixUtils::initializeMatrixZero(3, 3);
 
