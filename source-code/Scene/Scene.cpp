@@ -7,10 +7,20 @@
 
 void Scene::render(string fileName) {
     Picture picture = camera->takePicture();
+    if (smoothen) {
+        picture.smoothen();
+    }
     picture.writeToFile(fileName);
 }
 
-Scene::Scene(MeshCollection *meshCollection, int width, int height, int numberOfRaysPerBounce, int bounceDepth) {
+Scene::Scene(
+        MeshCollection *meshCollection,
+        int width,
+        int height,
+        bool smoothen,
+        int numberOfRaysPerBounce,
+        int bounceDepth
+) : smoothen(smoothen) {
     RayIntensityCalculator rayIntensityCalculator = RayIntensityCalculator(
             numberOfRaysPerBounce,
             bounceDepth,
@@ -18,4 +28,5 @@ Scene::Scene(MeshCollection *meshCollection, int width, int height, int numberOf
     );
 
     camera = new Camera(width, height, rayIntensityCalculator);
+
 }
