@@ -14,7 +14,7 @@ Picture Camera::takePicture() {
     for (int j = 0; j < height; ++j) {
         for (int i = 0; i < width; ++i) {
             counter++;
-            if (counter % 10000 == 0) {
+            if (counter % 1000 == 0) {
                 printProgress(j, i);
             }
             Vector3D vectorToPixel = getVecToPixel(i, j);
