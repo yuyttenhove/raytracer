@@ -18,30 +18,33 @@ using namespace std;
 int main() {
 
 
-    string saveLocation = "C:\\Users\\ellio\\CLionProjects\\raytracer\\source-code\\output\\result.txt";
+    string saveLocation = "/home/yolan/dev/raytracer/source-code/output/result.txt";
     int numberOfRaysPerBounce = 50;
     int bounceDepth = 2;
     int width = 500;
     int height = 500;
 
 
+    // world
+    World world = World(0.2);
 
-    // mesh2
-    EmissiveMaterial emissiveMaterial2 = EmissiveMaterial(1.0);
-    Mesh emissiveMesh2 = Mesh(&emissiveMaterial2);
-    Triangle triangle2 = Triangle(&emissiveMesh2, {-0, -5000, -0.01}, {5000, -5000, -0.01}, {0, 5000, -0.01});
-    emissiveMesh2.addTriangle(&triangle2);
+    // light
+    EmissiveMaterial emissiveMaterial = EmissiveMaterial(1.0);
+    Mesh emissiveMesh = Mesh(&emissiveMaterial);
+    Triangle triangle2 = Triangle(&emissiveMesh, {1, -1, 1}, {1, 5, 3}, {1, -1, 5});
+    emissiveMesh.addTriangle(&triangle2);
 
-    DiffuseMaterial diffuseMaterial = DiffuseMaterial(1.0);
+    // floor
+    DiffuseMaterial diffuseMaterial = DiffuseMaterial(.75);
     Mesh diffuseMesh = Mesh(&diffuseMaterial);
-    Triangle diffuseTriangle = Triangle(&diffuseMesh, {2, -2, 0.01}, {-2, -2, 0.01}, {0, 2, 0.01});
+    Triangle diffuseTriangle = Triangle(&diffuseMesh, {100, -1, 100}, {-100, -1, 100}, {0, -1, -100});
     diffuseMesh.addTriangle(&diffuseTriangle);
 
 
-    vector<Mesh *> meshes{&emissiveMesh2, &diffuseMesh};
+    vector<Mesh *> meshes{&emissiveMesh, &diffuseMesh};
     MeshCollection meshCollection = MeshCollection(meshes);
 
-    Scene scene = Scene(&meshCollection, width, height, numberOfRaysPerBounce, bounceDepth);
+    Scene scene = Scene(&meshCollection, &world, width, height, numberOfRaysPerBounce, bounceDepth);
     scene.render(saveLocation);
 
 

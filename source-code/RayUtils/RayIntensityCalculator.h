@@ -8,6 +8,7 @@
 
 #include "Ray.h"
 #include "RayBouncer.h"
+#include "../Scene/World.h"
 
 class MeshCollection;
 
@@ -16,10 +17,11 @@ class RayIntensityCalculator {
     int numberOfRaysPerBounce;
     int bounceDepth;
     MeshCollection *meshCollection;
+    World *world;
 
 public:
 
-    RayIntensityCalculator(int numberOfRaysPerBounce, int bounceDepth, MeshCollection *meshCollection);
+    RayIntensityCalculator(int numberOfRaysPerBounce, int bounceDepth, MeshCollection *meshCollection, World *world);
 
     double calculateIntensityRay(Ray *ray);
 

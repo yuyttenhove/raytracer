@@ -14,20 +14,18 @@ double RayIntensityCalculator::calculateIntensityRay(Ray *ray) {
     Vector3D interSectionPoint = Vector3D();
     Triangle *triangle = meshCollection->getClosestTriangle(ray, &interSectionPoint);
     if (triangle == nullptr) {
-        return 0;
+        return world->getIntensity(ray->getDirection());
     } else {
         return triangle->getMesh()->getMaterial()->calculateIntensity(ray, triangle, this, &interSectionPoint);
     }
 }
 
-RayIntensityCalculator::RayIntensityCalculator(
-        int numberOfRaysPerBounce,
-        int bounceDepth,
-        MeshCollection *meshCollection
-) :
+RayIntensityCalculator::RayIntensityCalculator(int numberOfRaysPerBounce, int bounceDepth,
+                                               MeshCollection *meshCollection, World *world) :
         numberOfRaysPerBounce(numberOfRaysPerBounce),
         bounceDepth(bounceDepth),
-        meshCollection(meshCollection) {}
+        meshCollection(meshCollection),
+        world(world) {}
 
 int RayIntensityCalculator::getNumberOfRaysPerBounce() const {
     return numberOfRaysPerBounce;

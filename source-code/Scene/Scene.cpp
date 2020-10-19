@@ -10,12 +10,12 @@ void Scene::render(string fileName) {
     picture.writeToFile(fileName);
 }
 
-Scene::Scene(MeshCollection *meshCollection, int width, int height, int numberOfRaysPerBounce, int bounceDepth) {
+Scene::Scene(MeshCollection *meshCollection, World *world, int width, int height, int numberOfRaysPerBounce,
+             int bounceDepth) {
     RayIntensityCalculator rayIntensityCalculator = RayIntensityCalculator(
             numberOfRaysPerBounce,
             bounceDepth,
-            meshCollection
-    );
+            meshCollection, world);
 
     camera = new Camera(width, height, rayIntensityCalculator);
 }

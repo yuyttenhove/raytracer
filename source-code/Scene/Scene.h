@@ -14,13 +14,8 @@ class Scene {
     Camera *camera;
 
 public:
-    Scene(
-            MeshCollection *meshCollection,
-            int width,
-            int height,
-            int numberOfRaysPerBounce,
-            int bounceDepth
-    );
+    Scene(MeshCollection *meshCollection, World *world, int width, int height, int numberOfRaysPerBounce,
+          int bounceDepth);
 
     void render(string fileName);
 };
