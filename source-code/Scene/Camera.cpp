@@ -29,7 +29,7 @@ Vector3D Camera::getVecToPixel(int i, int j) {
     double scaleFactor = 2. / (width);
     double x = scaleFactor * (i + 0.5) - 1;
     double y = scaleFactor * (j + 0.5 - (double) height / 2);
-    return Vector3D(x, y, 1).normalize();
+    return Vector3D(1, x, y).normalize();
 }
 
 Camera::Camera(int width, int height, const RayIntensityCalculator &rayIntensityCalculator) :

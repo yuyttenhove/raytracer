@@ -17,6 +17,8 @@ class Matrix3x3 {
 public:
     Matrix3x3();
 
+    Matrix3x3(double theta, Vector3D axis);
+
     Matrix3x3(double sineTheta, double cosineTheta, Vector3D axis);
 
     void setElement(int i, int j, double value);
