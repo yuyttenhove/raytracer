@@ -43,8 +43,8 @@ double DiffuseMaterial::calculateIntensity(
 
         Ray bounce = Ray(rotatedVector, *interSectionPoint, bouncesBefore + 1);
         double intensityRay = rayIntensityCalculator->calculateIntensityRay(&bounce);
-//        sumIntensities += intensityRay * dalembertFactor;
-        sumIntensities += intensityRay;
+        sumIntensities += 2 * intensityRay * dalembertFactor;
+//        sumIntensities += i ntensityRay;
     }
 
     return sumIntensities * albedo / raysPerBounce;
