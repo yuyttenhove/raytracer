@@ -18,7 +18,7 @@ using namespace std;
 int main() {
 
 
-    string saveLocation = "C:\\Users\\ellio\\CLionProjects\\raytracer\\source-code\\output\\result.txt";
+    string saveLocation = "/home/yolan/dev/raytracer/source-code/output/result.txt";
     int numberOfRaysPerBounce = 50;
     int bounceDepth = 2;
     int width = 500;
@@ -32,6 +32,7 @@ int main() {
     Triangle triangle2 = Triangle(&emissiveMesh2, {-0, -5000, -0.01}, {5000, -5000, -0.01}, {0, 5000, -0.01});
     emissiveMesh2.addTriangle(&triangle2);
 
+    // floor
     DiffuseMaterial diffuseMaterial = DiffuseMaterial(1.0);
     Mesh diffuseMesh = Mesh(&diffuseMaterial);
     Triangle diffuseTriangle = Triangle(&diffuseMesh, {2, -2, 0.01}, {-2, -2, 0.01}, {0, 2, 0.01});
