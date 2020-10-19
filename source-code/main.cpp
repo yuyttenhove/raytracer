@@ -34,22 +34,20 @@ int main() {
     // mesh2
     EmissiveMaterial emissiveMaterial2 = EmissiveMaterial(1.0);
     Mesh emissiveMesh2 = Mesh(&emissiveMaterial2);
-    Triangle triangle2 = Triangle(&emissiveMesh2, {-10, -10, 0}, {10, -10, 0}, {0, 10, 0});
+    Triangle triangle2 = Triangle(&emissiveMesh2, {-10, 2, 0}, {10, 2, 0}, {0, 2, 10});
     emissiveMesh2.addTriangle(&triangle2);
-    MeshTransformer::rotateMesh(&emissiveMesh2, M_PI_2 + M_PI_4, {0, 1, 0});
-    MeshTransformer::translateMesh(&emissiveMesh2, {-3, 0, 0});
 
     DiffuseMaterial diffuseMaterial = DiffuseMaterial(.7);
     Mesh* cube = MeshGenerator::generateUnitCube(&diffuseMaterial);
-    MeshTransformer::rotateMesh(cube, M_PI_4, {0, 1, 0});
-    MeshTransformer::translateMesh(cube, {0, -.5, 3});
+    MeshTransformer::rotateMesh(cube, M_PI_4, {0, 0, 1});
+    MeshTransformer::translateMesh(cube, {3, 0, -.5});
 
     // floor
     DiffuseMaterial diffuseMaterial3 = DiffuseMaterial(.9);
     Mesh floor = Mesh(&diffuseMaterial3);
     floor.addTriangle(new Triangle(&floor, {0, -1, -100}, {-100, -1, 100}, {100, -1, 100}));
 
-    vector<Mesh *> meshes{&emissiveMesh2, cube, &floor};
+    vector<Mesh *> meshes{&emissiveMesh2, cube};
     MeshCollection meshCollection = MeshCollection(meshes);
 
     Scene scene = Scene(&meshCollection, width, height, smoothen, numberOfRaysPerBounce, bounceDepth);
