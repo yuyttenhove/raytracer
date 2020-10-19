@@ -13,11 +13,14 @@ class Scene {
 
     Camera *camera;
 
+    bool smoothen;
+
 public:
     Scene(
             MeshCollection *meshCollection,
             int width,
             int height,
+            bool smoothen,
             int numberOfRaysPerBounce,
             int bounceDepth
     );
