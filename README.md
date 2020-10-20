@@ -3,6 +3,7 @@
 ### TODO
 
 - [ ] fix lighting with cube
+- [ ] add way to save/load a meshcollection
 - [ ] make filepath different for different users
 - [ ] Importance sampling
 - [ ] Remove hacky code DiffuseMaterial (l 25)
