@@ -3,6 +3,7 @@
 ### TODO
 
 - [ ] fix lighting with cube
+- [ ] make filepath different for different users
 - [ ] Importance sampling
 - [ ] Remove hacky code DiffuseMaterial (l 25)
 - [ ] Extend MeshGenerator (circle, square, sphere, cone, suzanne?, ...)
