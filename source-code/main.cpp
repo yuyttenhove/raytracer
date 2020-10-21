@@ -22,7 +22,7 @@ int main() {
 
 
     string saveLocation = "C:\\Users\\yuytt\\dev\\raytracer\\source-code\\output\\result.txt";
-    int numberOfRaysPerBounce = 20;
+    int numberOfRaysPerBounce = 50;
     int bounceDepth = 3;
     int width = 500;
     int height = 500;
