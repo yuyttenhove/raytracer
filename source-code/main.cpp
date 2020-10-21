@@ -21,7 +21,7 @@ using namespace std;
 int main() {
 
 
-    string saveLocation = "/home/yolan/dev/raytracer/source-code/output/result.txt";
+    string saveLocation = "C:\\Users\\ellio\\CLionProjects\\raytracer\\source-code\\output\\result.txt";
     int numberOfRaysPerBounce = 20;
     int bounceDepth = 3;
     int width = 500;
@@ -40,7 +40,7 @@ int main() {
     DiffuseMaterial diffuseMaterial = DiffuseMaterial(.7);
     Mesh* cube = MeshGenerator::generateUnitCube(&diffuseMaterial);
     MeshTransformer::rotateMesh(cube, M_PI_4, {0, 0, 1});
-    MeshTransformer::translateMesh(cube, {3, 0, -.5});
+    MeshTransformer::translateMesh(cube, {3, 0, -1});
 
     // floor
     DiffuseMaterial diffuseMaterial3 = DiffuseMaterial(.9);

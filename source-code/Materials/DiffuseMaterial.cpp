@@ -19,7 +19,8 @@ double DiffuseMaterial::calculateIntensity(
     int bouncesBefore = ray->getNumberOfBouncesBefore();
     Vector3D normal = triangle->getNormal();
 
-    Vector3D rotationAxis = normal.cross({0, 0, 1});
+    Vector3D zAxis = {0, 0, 1};
+    Vector3D rotationAxis = zAxis.cross(normal);
 
     Matrix3x3 rotationMatrix;
     if (rotationAxis.length() < 0.0001) {
