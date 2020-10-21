@@ -21,7 +21,7 @@ using namespace std;
 int main() {
 
 
-    string saveLocation = "/home/yolan/dev/raytracer/source-code/output/result.txt";
+    string saveLocation = "C:\\Users\\yuytt\\dev\\raytracer\\source-code\\output\\result.txt";
     int numberOfRaysPerBounce = 20;
     int bounceDepth = 3;
     int width = 500;
