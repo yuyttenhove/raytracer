@@ -16,3 +16,4 @@
 - [ ] use anomaly detecting thing I want to try where, for a diffuse material, be shoot x rays but only use the middle Y% values closest to the median
 - [ ] Parallelisation
 - [ ] Implement MSAA in camera
+- [ ] Add sun light
