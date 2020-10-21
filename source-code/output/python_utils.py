@@ -13,4 +13,4 @@ def txt_to_image(filename, savename):
 if __name__ == "__main__":
     path = Path(__file__).parent
     fname = path / "result.txt"
-    txt_to_image(fname, path / "resultWithMedianSmooth20.jpg")
+    txt_to_image(fname, path / "result.jpg")
