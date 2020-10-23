@@ -12,6 +12,7 @@
 #include "Materials/ReflectiveMaterial.h"
 #include "util/Matrix3x3.h"
 #include "Materials/DiffuseMaterial.h"
+#include "SystemSpecificConstants.h"
 #include <cmath>
 #include <random>
 #include <chrono>
@@ -20,9 +21,7 @@ using namespace std;
 
 int main() {
 
-
-    string saveLocation = "C:\\Users\\yuytt\\dev\\raytracer\\source-code\\output\\result.txt";
-    int numberOfRaysPerBounce = 50;
+    int numberOfRaysPerBounce = 5;
     int bounceDepth = 3;
     int width = 500;
     int height = 500;
@@ -52,7 +51,12 @@ int main() {
     MeshCollection meshCollection = MeshCollection(meshes);
 
     Scene scene = Scene(&meshCollection, width, height, smoothen, numberOfRaysPerBounce, bounceDepth);
-    scene.render(saveLocation);
+
+    // voeg een file toe met de naam "SystemSpecificConstants.h" op het zelfde niveau als main.cpp, zet hier een
+    // "const string SAVE_ADDRESS = "C:\\Users\\ellio\\CLionProjects\\raytracer\\source-code\\output\\resuult.txt";"
+    // waarbij u juist pad staat
+    // VOEG DIT FILE NIET TOE AAN GIT, DIT ZOU VANZELF IN ORDE MOETEN ZIJN WANT T STAAT IN DE GITIGNORE, MAAR LET TOCH OP
+    scene.render(SAVE_ADDRESS);
 
     auto end = chrono::steady_clock::now();
     cout << endl;
@@ -60,7 +64,5 @@ int main() {
          << chrono::duration_cast<chrono::seconds>(end - start).count()
          << " sec";
 
-
     return 0;
-
 }
