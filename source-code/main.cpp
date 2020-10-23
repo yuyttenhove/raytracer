@@ -12,6 +12,8 @@
 #include "Materials/ReflectiveMaterial.h"
 #include "util/Matrix3x3.h"
 #include "Materials/DiffuseMaterial.h"
+#include "windows.h"
+#include "SystemSpecificConstants.h"
 #include <cmath>
 #include <random>
 #include <chrono>
@@ -20,9 +22,7 @@ using namespace std;
 
 int main() {
 
-
-    string saveLocation = "C:\\Users\\ellio\\CLionProjects\\raytracer\\source-code\\output\\result.txt";
-    int numberOfRaysPerBounce = 20;
+    int numberOfRaysPerBounce = 500;
     int bounceDepth = 3;
     int width = 500;
     int height = 500;
@@ -38,7 +38,7 @@ int main() {
     emissiveMesh2.addTriangle(&triangle2);
 
     DiffuseMaterial diffuseMaterial = DiffuseMaterial(.7);
-    Mesh* cube = MeshGenerator::generateUnitCube(&diffuseMaterial);
+    Mesh *cube = MeshGenerator::generateUnitCube(&diffuseMaterial);
     MeshTransformer::rotateMesh(cube, M_PI_4, {0, 0, 1});
     MeshTransformer::translateMesh(cube, {3, 0, -1});
 
@@ -51,7 +51,7 @@ int main() {
     MeshCollection meshCollection = MeshCollection(meshes);
 
     Scene scene = Scene(&meshCollection, width, height, smoothen, numberOfRaysPerBounce, bounceDepth);
-    scene.render(saveLocation);
+    scene.render(SAVE_ADDRESS);
 
     auto end = chrono::steady_clock::now();
     cout << endl;
@@ -59,7 +59,12 @@ int main() {
          << chrono::duration_cast<chrono::seconds>(end - start).count()
          << " sec";
 
-
     return 0;
+}
 
+wstring ExePath() {
+    TCHAR buffer[MAX_PATH] = {0};
+    GetModuleFileName(NULL, buffer, MAX_PATH);
+    std::wstring::size_type pos = wstring(buffer).find_last_of(L"\\/");
+    return std::wstring(buffer).substr(0, pos);
 }
