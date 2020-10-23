@@ -12,7 +12,6 @@
 #include "Materials/ReflectiveMaterial.h"
 #include "util/Matrix3x3.h"
 #include "Materials/DiffuseMaterial.h"
-#include "windows.h"
 #include "SystemSpecificConstants.h"
 #include <cmath>
 #include <random>
@@ -37,17 +36,18 @@ int main() {
     Triangle triangle2 = Triangle(&emissiveMesh2, {-10, 2, 0}, {10, 2, 0}, {0, 2, 10});
     emissiveMesh2.addTriangle(&triangle2);
 
+    // cube
     DiffuseMaterial diffuseMaterial = DiffuseMaterial(.7);
-    Mesh *cube = MeshGenerator::generateUnitCube(&diffuseMaterial);
+    Mesh* cube = MeshGenerator::generateUnitCube(&diffuseMaterial);
     MeshTransformer::rotateMesh(cube, M_PI_4, {0, 0, 1});
     MeshTransformer::translateMesh(cube, {3, 0, -1});
 
     // floor
-    DiffuseMaterial diffuseMaterial3 = DiffuseMaterial(.9);
+    DiffuseMaterial diffuseMaterial3 = DiffuseMaterial(.5);
     Mesh floor = Mesh(&diffuseMaterial3);
-    floor.addTriangle(new Triangle(&floor, {0, -1, -100}, {-100, -1, 100}, {100, -1, 100}));
+    floor.addTriangle(new Triangle(&floor, {-100, 100, -1.5}, {0, -100, -1.5}, {100, 100, -1.5}));
 
-    vector<Mesh *> meshes{&emissiveMesh2, cube};
+    vector<Mesh *> meshes{&emissiveMesh2, cube, &floor};
     MeshCollection meshCollection = MeshCollection(meshes);
 
     Scene scene = Scene(&meshCollection, width, height, smoothen, numberOfRaysPerBounce, bounceDepth);

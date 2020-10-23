@@ -38,14 +38,15 @@ double DiffuseMaterial::calculateIntensity(
 
     double sumIntensities = 0.0;
     for (int i = 0; i < raysPerBounce; i++) {
-        Vector3D randomVectorInHalveUnitSphere = HalveUnitSphereVectorGenerator::generateVectorHalveUnitSphere();
-        double dalembertFactor = randomVectorInHalveUnitSphere.getZ();
+//        Vector3D randomVectorInHalveUnitSphere = HalveUnitSphereVectorGenerator::generateVectorHalveUnitSphere();
+        Vector3D randomVectorInHalveUnitSphere = HalveUnitSphereVectorGenerator::generateCosineWeightedVector();
+//        double dalembertFactor = randomVectorInHalveUnitSphere.getZ();
         Vector3D rotatedVector = rotationMatrix.dot(randomVectorInHalveUnitSphere);
 
         Ray bounce = Ray(rotatedVector, *interSectionPoint, bouncesBefore + 1);
         double intensityRay = rayIntensityCalculator->calculateIntensityRay(&bounce);
-        sumIntensities += 2 * intensityRay * dalembertFactor;
-//        sumIntensities += i ntensityRay;
+//        sumIntensities += 2 * intensityRay * dalembertFactor;
+        sumIntensities += intensityRay;
     }
 
     return sumIntensities * albedo / raysPerBounce;

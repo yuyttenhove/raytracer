@@ -12,6 +12,8 @@ class HalveUnitSphereVectorGenerator {
 
 public:
     static Vector3D generateVectorHalveUnitSphere();
+
+    static Vector3D generateCosineWeightedVector();
 };
 
 
