@@ -52,9 +52,10 @@ int main() {
 
     Scene scene = Scene(&meshCollection, width, height, smoothen, numberOfRaysPerBounce, bounceDepth);
 
-    // voeg een file toe met de naam "SystemSpecificConstants.h", zet hier een
+    // voeg een file toe met de naam "SystemSpecificConstants.h" op het zelfde niveau als main.cpp, zet hier een
     // "const string SAVE_ADDRESS = "C:\\Users\\ellio\\CLionProjects\\raytracer\\source-code\\output\\resuult.txt";"
     // waarbij u juist pad staat
+    // VOEG DIT FILE NIET TOE AAN GIT, DIT ZOU VANZELF IN ORDE MOETEN ZIJN WANT T STAAT IN DE GITIGNORE, MAAR LET TOCH OP
     scene.render(SAVE_ADDRESS);
 
     auto end = chrono::steady_clock::now();
