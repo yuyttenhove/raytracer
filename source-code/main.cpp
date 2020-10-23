@@ -22,7 +22,7 @@ using namespace std;
 
 int main() {
 
-    int numberOfRaysPerBounce = 500;
+    int numberOfRaysPerBounce = 5;
     int bounceDepth = 3;
     int width = 500;
     int height = 500;
@@ -51,6 +51,10 @@ int main() {
     MeshCollection meshCollection = MeshCollection(meshes);
 
     Scene scene = Scene(&meshCollection, width, height, smoothen, numberOfRaysPerBounce, bounceDepth);
+
+    // voeg een file toe met de naam "SystemSpecificConstants.h", zet hier een
+    // "const string SAVE_ADDRESS = "C:\\Users\\ellio\\CLionProjects\\raytracer\\source-code\\output\\resuult.txt";"
+    // waarbij u juist pad staat
     scene.render(SAVE_ADDRESS);
 
     auto end = chrono::steady_clock::now();
@@ -60,11 +64,4 @@ int main() {
          << " sec";
 
     return 0;
-}
-
-wstring ExePath() {
-    TCHAR buffer[MAX_PATH] = {0};
-    GetModuleFileName(NULL, buffer, MAX_PATH);
-    std::wstring::size_type pos = wstring(buffer).find_last_of(L"\\/");
-    return std::wstring(buffer).substr(0, pos);
 }
