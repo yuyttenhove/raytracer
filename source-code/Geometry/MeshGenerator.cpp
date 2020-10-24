@@ -59,7 +59,7 @@ Mesh *MeshGenerator::generateUnitCircle(Material *material, int numberOfTriangle
     return mesh;
 }
 
-Mesh *MeshGenerator::generateOctahedron(Material *material, int numberOfIterations) {
+Mesh *MeshGenerator::generateOctahedron(Material *material) {
     Mesh *mesh = new Mesh(material);
 
     Vector3D highXHighYVector = Vector3D(1, 1, 0).normalize();
@@ -78,14 +78,67 @@ Mesh *MeshGenerator::generateOctahedron(Material *material, int numberOfIteratio
     // top left triangle
     mesh->addTriangle(new Triangle(mesh, highXHighYVector, lowXHighYVector, topVector));
 
-    // top front triangle
-    mesh->addTriangle(new Triangle(mesh, bottomVector, lowXHighYVector, lowXLowYVector));
-    // top right triangle
-    mesh->addTriangle(new Triangle(mesh, bottomVector, lowXLowYVector, highXLowYVector, topVector));
-    // top back triangle
-    mesh->addTriangle(new Triangle(mesh, bottomVector, highXLowYVector, highXHighYVector, topVector));
-    // top left triangle
-    mesh->addTriangle(new Triangle(mesh, bottomVector, highXHighYVector, lowXHighYVector, topVector));
+    // bottom front triangle
+    mesh->addTriangle(new Triangle(mesh, lowXHighYVector, bottomVector, lowXLowYVector));
+    // bottom right triangle
+    mesh->addTriangle(new Triangle(mesh, lowXLowYVector, bottomVector, highXLowYVector));
+    // bottom back triangle
+    mesh->addTriangle(new Triangle(mesh, highXLowYVector, bottomVector, highXHighYVector));
+    // bottom left triangle
+    mesh->addTriangle(new Triangle(mesh, highXHighYVector, bottomVector, lowXHighYVector));
 
-    return nullptr;
+    return mesh;
+}
+
+Mesh *MeshGenerator::generateSphere(Material *material, int numberOfIterations) {
+    Mesh *octahedron = generateUnitCube(material);
+    vector<Triangle *> triangles = octahedron->getTriangles();
+
+//    Triangle unitTriangle = Triangle(octahedron, {2, 1, 0}, {2, -1, 0}, {2, 0, 1});
+//    vector<Triangle *> triangles{&unitTriangle};
+
+    // divide triangles
+    for (int i = 0; i < numberOfIterations; ++i) {
+        vector<Triangle *> newTriangles = vector<Triangle *>();
+        for (auto triangle : triangles) {
+            // normal points out of screen
+            //        C    
+            //       / \   
+            //      D - E   
+            //     / \ / \
+            //    A - F - B
+
+            Vector3D A = triangle->getVertex0();
+            Vector3D B = triangle->getVertex1();
+            Vector3D C = triangle->getVertex2();
+
+            Vector3D D = {(A.getX() + C.getX()) * 0.5, (A.getY() + C.getY()) * 0.5, (A.getZ() + C.getZ()) * 0.5};
+            Vector3D E = {(B.getX() + C.getX()) * 0.5, (B.getY() + C.getY()) * 0.5, (B.getZ() + C.getZ()) * 0.5};
+            Vector3D F = {(A.getX() + B.getX()) * 0.5, (A.getY() + B.getY()) * 0.5, (A.getZ() + B.getZ()) * 0.5};
+
+            Triangle *AFD = new Triangle(nullptr, A, F, D);
+            Triangle *FBE = new Triangle(nullptr, F, B, E);
+            Triangle *DFE = new Triangle(nullptr, D, F, E);
+            Triangle *DEC = new Triangle(nullptr, D, E, C);
+
+            newTriangles.push_back(AFD);
+            newTriangles.push_back(FBE);
+            newTriangles.push_back(DFE);
+            newTriangles.push_back(DEC);
+        }
+        triangles = newTriangles;
+    }
+
+    // normalize vectors
+    Mesh *mesh = new Mesh(material);
+    for (auto triangle : triangles) {
+
+        Vector3D vertex0 = triangle->getVertex0();
+        Vector3D vertex1 = triangle->getVertex1();
+        Vector3D vertex2 = triangle->getVertex2();
+
+        mesh->addTriangle(new Triangle(mesh, vertex0.normalize(), vertex1.normalize(), vertex2.normalize()));
+    }
+
+    return mesh;
 }

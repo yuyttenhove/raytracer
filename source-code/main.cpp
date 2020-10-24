@@ -21,7 +21,7 @@ using namespace std;
 
 int main() {
 
-    int numberOfRaysPerBounce = 5;
+    int numberOfRaysPerBounce = 50;
     int bounceDepth = 3;
     int width = 1000;
     int height = 1000;
@@ -31,21 +31,21 @@ int main() {
     auto start = chrono::steady_clock::now();
 
     // mesh2
-    EmissiveMaterial emissiveMaterial2 = EmissiveMaterial(1.0);
-    Mesh *circle = MeshGenerator::generateUnitCircle(&emissiveMaterial2);
+    DiffuseMaterial diffuseMaterial = DiffuseMaterial(1.0);
+    Mesh *piramid = MeshGenerator::generateSphere(&diffuseMaterial, 4);
+    MeshTransformer::rotateMesh(piramid, -M_PI_4, {0, 1, 0});
+    MeshTransformer::translateMesh(piramid, {5, 0, 0});
 
-    MeshTransformer::rotateMesh(circle, M_PI_2, {0, -1, 0});
-    MeshTransformer::translateMesh(circle, {5, 0, 0});
+    EmissiveMaterial emissiveMaterial = EmissiveMaterial(1.0);
+    Mesh emissiveMesh = Mesh(&emissiveMaterial);
+    Triangle triangle = Triangle(&emissiveMesh, {-1, 5000, -5000}, {-1, 0, 5000}, {-1, 0, -5000});
+    emissiveMesh.addTriangle(&triangle);
 
-    vector<Mesh *> meshes{circle};
+    vector<Mesh *> meshes{piramid, &emissiveMesh};
     MeshCollection meshCollection = MeshCollection(meshes);
 
     Scene scene = Scene(&meshCollection, width, height, smoothen, numberOfRaysPerBounce, bounceDepth);
 
-    // voeg een file toe met de naam "SystemSpecificConstants.h" op het zelfde niveau als main.cpp, zet hier een
-    // "const string SAVE_ADDRESS = "C:\\Users\\ellio\\CLionProjects\\raytracer\\source-code\\output\\resuult.txt";"
-    // waarbij u juist pad staat
-    // VOEG DIT FILE NIET TOE AAN GIT, DIT ZOU VANZELF IN ORDE MOETEN ZIJN WANT T STAAT IN DE GITIGNORE, MAAR LET TOCH OP
     scene.render(SAVE_ADDRESS);
 
     auto end = chrono::steady_clock::now();
