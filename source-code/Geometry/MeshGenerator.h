@@ -10,7 +10,14 @@
 
 class MeshGenerator {
 public:
-    static Mesh* generateUnitCube(Material *material);
+
+    static Mesh *generateSphere(Material *material, int numberOfIterations = 4);
+
+    static Mesh *generateOctahedron(Material *material);
+
+    static Mesh *generateUnitCircle(Material *material, int numberOfTriangles = 50);
+
+    static Mesh *generateUnitCube(Material *material);
 };
 
 
