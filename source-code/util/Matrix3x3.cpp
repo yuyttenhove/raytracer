@@ -19,9 +19,10 @@ Matrix3x3::Matrix3x3(double sineTheta, double cosineTheta, Vector3D axis) {
         matrix[1][1] = 1.0;
         matrix[2][2] = 1.0;
     } else {
-        double ux = axis.getX();
-        double uy = axis.getY();
-        double uz = axis.getZ();
+        Vector3D normedAxis = axis.normalize();
+        double ux = normedAxis.getX();
+        double uy = normedAxis.getY();
+        double uz = normedAxis.getZ();
 
         double oneMinusCosineTheta = 1 - cosineTheta;
         matrix[0][0] = (ux * ux * oneMinusCosineTheta) + cosineTheta;

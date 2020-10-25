@@ -91,11 +91,8 @@ Mesh *MeshGenerator::generateOctahedron(Material *material) {
 }
 
 Mesh *MeshGenerator::generateSphere(Material *material, int numberOfIterations) {
-    Mesh *octahedron = generateUnitCube(material);
+    Mesh *octahedron = generateOctahedron(material);
     vector<Triangle *> triangles = octahedron->getTriangles();
-
-//    Triangle unitTriangle = Triangle(octahedron, {2, 1, 0}, {2, -1, 0}, {2, 0, 1});
-//    vector<Triangle *> triangles{&unitTriangle};
 
     // divide triangles
     for (int i = 0; i < numberOfIterations; ++i) {
