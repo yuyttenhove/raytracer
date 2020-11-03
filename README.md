@@ -17,3 +17,5 @@
 - [ ] Parallelisation
 - [ ] Implement MSAA in camera
 - [ ] Add sun light
+- [ ] add Reinhard tone mapping
+
