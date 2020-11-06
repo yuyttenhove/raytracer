@@ -7,7 +7,10 @@
 
 
 #include "Material.h"
-#include "../MeshExporter/MaterialsExportNames.h"
+#include <cmath>
+#include "../MeshExporter/ExportStrings.h"
+#include "../util/HalveUnitSphereVectorGenerator.h"
+#include "../util/Matrix3x3.h"
 
 
 class DiffuseMaterial : public Material {

@@ -68,8 +68,12 @@ Vector3D::Vector3D() {
     this->z = 0;
 }
 
+string Vector3D::toExportString() {
+    return to_string(x) + xyzDelimiter + to_string(y) + xyzDelimiter + to_string(z);
+}
+
 ostream &operator<<(ostream &os, Vector3D vector) {
-    os << "(" << vector.getX() << ',' << vector.getY() << ',' << vector.getZ() << ")";
+    os << vector.getX() << xyzDelimiter << vector.getY() << xyzDelimiter << vector.getZ();
     return os;
 }
 

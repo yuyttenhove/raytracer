@@ -3,17 +3,10 @@
 #include "util/Vector3D.h"
 #include "Geometry/Triangle.h"
 #include "Geometry/MeshCollection.h"
-#include "Geometry/MeshGenerator.h"
-#include "Geometry/MeshTransformer.h"
 #include "Scene/Camera.h"
 #include "Scene/Scene.h"
 #include "Materials/EmissiveMaterial.h"
-#include "Geometry/Mesh.h"
-#include "Materials/ReflectiveMaterial.h"
-#include "util/Matrix3x3.h"
-#include "Materials/DiffuseMaterial.h"
 #include "SystemSpecificConstants.h"
-#include <cmath>
 #include <random>
 #include <chrono>
 
@@ -30,18 +23,12 @@ int main() {
 
     auto start = chrono::steady_clock::now();
 
-    // mesh2
-    DiffuseMaterial diffuseMaterial = DiffuseMaterial(1.0);
-    Mesh *piramid = MeshGenerator::generateSphere(&diffuseMaterial, 4);
-    MeshTransformer::rotateMesh(piramid, -M_PI_4, {0, 1, 0});
-    MeshTransformer::translateMesh(piramid, {5, 0, 0});
-
     EmissiveMaterial emissiveMaterial = EmissiveMaterial(1.0);
     Mesh emissiveMesh = Mesh(&emissiveMaterial);
-    Triangle triangle = Triangle(&emissiveMesh, {-1, 5000, -5000}, {-1, 0, 5000}, {-1, 0, -5000});
+    Triangle triangle = Triangle(&emissiveMesh, {10, 0, 5}, {10, 5, -5}, {10, 0, -5});
     emissiveMesh.addTriangle(&triangle);
 
-    vector<Mesh *> meshes{piramid, &emissiveMesh};
+    vector<Mesh *> meshes{&emissiveMesh};
     MeshCollection meshCollection = MeshCollection(meshes);
 
     Scene scene = Scene(&meshCollection, width, height, smoothen, numberOfRaysPerBounce, bounceDepth);

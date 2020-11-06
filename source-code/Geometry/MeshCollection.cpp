@@ -1,7 +1,6 @@
 //
 
 #include "MeshCollection.h"
-#include <cfloat>
 
 //
 // Created by ellio on 14-10-2020.
@@ -74,4 +73,8 @@ bool MeshCollection::rayIntersectsTriangle(Vector3D rayOrigin,
     } else {
         return false;
     }
+}
+
+const vector<Mesh *> &MeshCollection::getMeshes() const {
+    return meshes;
 }

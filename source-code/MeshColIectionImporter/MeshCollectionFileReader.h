@@ -1,0 +1,14 @@
+//
+// Created by ellio on 6-11-2020.
+//
+
+#ifndef RAYTRACER_MESHCOLLECTIONFILEREADER_H
+#define RAYTRACER_MESHCOLLECTIONFILEREADER_H
+
+
+class MeshCollectionFileReader {
+
+};
+
+
+#endif //RAYTRACER_MESHCOLLECTIONFILEREADER_H

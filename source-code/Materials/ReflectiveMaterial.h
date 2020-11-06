@@ -9,7 +9,7 @@
 #include "../RayUtils/Ray.h"
 #include "../Geometry/Triangle.h"
 #include "../RayUtils/RayIntensityCalculator.h"
-#include "../MeshExporter/MaterialsExportNames.h"
+#include "../MeshExporter/ExportStrings.h"
 #include "Material.h"
 
 class ReflectiveMaterial : public Material {

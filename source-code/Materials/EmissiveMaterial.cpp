@@ -3,8 +3,6 @@
 //
 
 #include "EmissiveMaterial.h"
-#include "../RayUtils/RayIntensityCalculator.h"
-
 
 EmissiveMaterial::EmissiveMaterial(double intensity) : intensity(intensity) {}
 
