@@ -25,3 +25,7 @@ ReflectiveMaterial::calculateIntensity(
     }
     return rayIntensityCalculator->calculateIntensityRay(&reflectedRay) * shininess;
 }
+
+string ReflectiveMaterial::getExportString() {
+    return reflectiveMaterialExportName;
+}

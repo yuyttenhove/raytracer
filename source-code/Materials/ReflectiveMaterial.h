@@ -9,6 +9,7 @@
 #include "../RayUtils/Ray.h"
 #include "../Geometry/Triangle.h"
 #include "../RayUtils/RayIntensityCalculator.h"
+#include "../MeshExporter/MaterialsExportNames.h"
 #include "Material.h"
 
 class ReflectiveMaterial : public Material {
@@ -24,6 +25,8 @@ public:
             RayIntensityCalculator *rayIntensityCalculator,
             Vector3D *interSectionPoint
     ) override;
+
+    string getExportString() override;
 
 };
 

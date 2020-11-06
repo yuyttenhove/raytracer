@@ -7,6 +7,8 @@
 
 
 #include "Material.h"
+#include "../MeshExporter/MaterialsExportNames.h"
+
 
 class DiffuseMaterial : public Material {
 
@@ -21,6 +23,8 @@ public:
             RayIntensityCalculator *rayIntensityCalculator,
             Vector3D *interSectionPoint
     ) override;
+
+    virtual string getExportString() override;
 
 
 };

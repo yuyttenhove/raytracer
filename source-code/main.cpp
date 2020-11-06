@@ -21,10 +21,10 @@ using namespace std;
 
 int main() {
 
-    int numberOfRaysPerBounce = 50;
+    int numberOfRaysPerBounce = 5;
     int bounceDepth = 3;
-    int width = 1000;
-    int height = 1000;
+    int width = 500;
+    int height = 500;
     bool smoothen = false;
 
 

@@ -51,3 +51,7 @@ double DiffuseMaterial::calculateIntensity(
 
     return sumIntensities * albedo / raysPerBounce;
 }
+
+string DiffuseMaterial::getExportString() {
+    return diffuseMaterialExportName;
+}

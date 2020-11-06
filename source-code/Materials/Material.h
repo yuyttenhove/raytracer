@@ -20,6 +20,8 @@ public:
             RayIntensityCalculator *rayIntensityCalculator,
             Vector3D *interSectionPoint
     ) = 0;
+
+    virtual string getExportString() = 0;
 };
 
 
