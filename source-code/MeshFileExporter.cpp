@@ -8,21 +8,27 @@
 #include "SystemSpecificConstants.h"
 #include "MeshCollectionExporter/MeshCollectionStringCreator.h"
 #include "Materials/DiffuseMaterial.h"
+#include "Materials/EmissiveMaterial.h"
+#include "Geometry/MeshGenerator.h"
+#include "Geometry/MeshTransformer.h"
 
 using namespace std;
 
 int main() {
 
     // the name of the file where the meshCollection export will reside
-    string fileName = "myTestExport.txt";
+    string fileName = "HalfBacklitSphere.txt";
 
-    // the mesh that will be exported
-    DiffuseMaterial emissiveMaterial = DiffuseMaterial(1.0);
-    Mesh emissiveMesh = Mesh(&emissiveMaterial);
-    Triangle triangle = Triangle(&emissiveMesh, {1, 5000, -5000}, {-1, 0, 5000}, {-1, 0, -5000});
-    emissiveMesh.addTriangle(&triangle);
+    DiffuseMaterial diffuseMaterial = DiffuseMaterial(0.7);
+    Mesh *sphere = MeshGenerator::generateSphere(&diffuseMaterial, 3);
+    MeshTransformer::translateMesh(sphere, {3, 0, 0});
 
-    vector<Mesh *> meshes{&emissiveMesh};
+    EmissiveMaterial emissiveMaterial = EmissiveMaterial(1.0);
+    Mesh lightSource = Mesh(&emissiveMaterial);
+    Triangle triangle = Triangle(&lightSource, {-1, 1000, -1000}, {-1, 0, 1000}, {-1, 0, -1000});
+    lightSource.addTriangle(&triangle);
+
+    vector<Mesh *> meshes{&lightSource, sphere};
     MeshCollection meshCollection = MeshCollection(meshes);
 
 
