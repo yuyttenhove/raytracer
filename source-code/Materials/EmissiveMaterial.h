@@ -7,6 +7,7 @@
 
 
 #include "Material.h"
+#include "../MeshCollectionExporter/ExportStrings.h"
 
 class EmissiveMaterial : public Material {
 
@@ -22,6 +23,8 @@ public:
             RayIntensityCalculator *rayIntensityCalculator,
             Vector3D *interSectionPoint
     ) override;
+
+    string getExportString() override;
 };
 
 

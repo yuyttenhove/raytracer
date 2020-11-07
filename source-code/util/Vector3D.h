@@ -7,6 +7,8 @@
 
 #include <cmath>
 #include <iostream>
+#include <string>
+#include "../MeshCollectionExporter/ExportStrings.h"
 
 using namespace std;
 
@@ -48,6 +50,8 @@ public:
     Vector3D normalize();
 
     Vector3D cross(Vector3D otherVec) const;
+
+    string toExportString();
 
 };
 

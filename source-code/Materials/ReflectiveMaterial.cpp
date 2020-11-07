@@ -4,10 +4,9 @@
 
 #include "ReflectiveMaterial.h"
 
-ReflectiveMaterial::ReflectiveMaterial(float shininess) : shininess(shininess) {}
+ReflectiveMaterial::ReflectiveMaterial(double shininess) : shininess(shininess) {}
 
-double
-ReflectiveMaterial::calculateIntensity(
+double ReflectiveMaterial::calculateIntensity(
         Ray *ray,
         Triangle *triangle,
         RayIntensityCalculator *rayIntensityCalculator,
@@ -24,4 +23,8 @@ ReflectiveMaterial::calculateIntensity(
         int i = 0;
     }
     return rayIntensityCalculator->calculateIntensityRay(&reflectedRay) * shininess;
+}
+
+string ReflectiveMaterial::getExportString() {
+    return reflectiveMaterialExportName + materialPropertiesDelimiter + to_string(shininess);
 }

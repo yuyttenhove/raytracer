@@ -3,9 +3,6 @@
 //
 
 #include "DiffuseMaterial.h"
-#include "../util/HalveUnitSphereVectorGenerator.h"
-#include "../util/Matrix3x3.h"
-#include <cmath>
 
 DiffuseMaterial::DiffuseMaterial(double albedo) : albedo(albedo) {}
 
@@ -50,4 +47,8 @@ double DiffuseMaterial::calculateIntensity(
     }
 
     return sumIntensities * albedo / raysPerBounce;
+}
+
+string DiffuseMaterial::getExportString() {
+    return diffuseMaterialExportName + materialPropertiesDelimiter + to_string(albedo);
 }

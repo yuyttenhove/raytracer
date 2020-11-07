@@ -18,7 +18,6 @@ void Picture::writeToFile(string fileName) {
         myfile << "\n";
     }
     myfile.close();
-
 }
 
 Picture::Picture(const vector<vector<double>> &pixels) : pixels(pixels) {}

@@ -3,8 +3,6 @@
 //
 
 #include "EmissiveMaterial.h"
-#include "../RayUtils/RayIntensityCalculator.h"
-
 
 EmissiveMaterial::EmissiveMaterial(double intensity) : intensity(intensity) {}
 
@@ -16,5 +14,9 @@ EmissiveMaterial::calculateIntensity(
         Vector3D *interSectionPoint
 ) {
     return intensity;
+}
+
+string EmissiveMaterial::getExportString() {
+    return emissiveMaterialExportName + materialPropertiesDelimiter + to_string(intensity);
 }
 
