@@ -6,7 +6,13 @@
 #define RAYTRACER_MESHCOLLECTIONCREATORFROMSTRING_H
 
 
+#include "../Geometry/MeshCollection.h"
+#include "MeshCreatorFromString.h"
+
 class MeshCollectionCreatorFromString {
+
+public:
+    static MeshCollection createMeshCollectionFromString(string meshCollectionString);
 
 };
 

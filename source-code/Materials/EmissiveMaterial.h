@@ -7,7 +7,7 @@
 
 
 #include "Material.h"
-#include "../MeshExporter/ExportStrings.h"
+#include "../MeshCollectionExporter/ExportStrings.h"
 
 class EmissiveMaterial : public Material {
 

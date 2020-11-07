@@ -50,5 +50,5 @@ double DiffuseMaterial::calculateIntensity(
 }
 
 string DiffuseMaterial::getExportString() {
-    return diffuseMaterialExportName;
+    return diffuseMaterialExportName + materialPropertiesDelimiter + to_string(albedo);
 }

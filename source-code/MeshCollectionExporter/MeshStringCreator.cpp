@@ -12,7 +12,7 @@ string MeshStringCreator::generateMeshString(Mesh *mesh) {
     const vector<Triangle *> triangles = mesh->getTriangles();
     for (auto triangle: triangles) {
         totalTrianglesString += generateTriangleString(triangle);
-        totalTrianglesString += triangleDelimiter;
+        totalTrianglesString += trianglesDelimiter;
     }
 
     // trim off the last triangleDelimiter

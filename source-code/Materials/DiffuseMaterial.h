@@ -8,7 +8,7 @@
 
 #include "Material.h"
 #include <cmath>
-#include "../MeshExporter/ExportStrings.h"
+#include "../MeshCollectionExporter/ExportStrings.h"
 #include "../util/HalveUnitSphereVectorGenerator.h"
 #include "../util/Matrix3x3.h"
 

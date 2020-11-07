@@ -47,7 +47,14 @@ add_executable(
         source-code/MeshCollectionExporter/MeshStringCreator.cpp
         source-code/MeshCollectionExporter/MeshStringCreator.h
         source-code/MeshCollectionExporter/MeshCollectionStringCreator.cpp
-        source-code/MeshCollectionExporter/MeshCollectionStringCreator.h)
+        source-code/MeshCollectionExporter/MeshCollectionStringCreator.h
+        source-code/MeshCollectionImporter/MeshCollectionCreatorFromString.cpp
+        source-code/MeshCollectionImporter/MeshCollectionCreatorFromString.h
+        source-code/MeshCollectionImporter/MeshCreatorFromString.cpp
+        source-code/MeshCollectionImporter/MeshCreatorFromString.h
+        source-code/MeshCollectionImporter/MeshCollectionFromFileReader.cpp
+        source-code/MeshCollectionImporter/MeshCollectionFromFileReader.h
+)
 
 
 add_executable(
@@ -74,4 +81,30 @@ add_executable(
         source-code/Scene/Scene.h
         source-code/Geometry/MeshCollection.cpp
         source-code/Geometry/Mesh.cpp source-code/Geometry/Mesh.h
-        source-code/util/MatrixUtils.cpp source-code/util/MatrixUtils.h source-code/Materials/ReflectiveMaterial.cpp source-code/Materials/ReflectiveMaterial.h source-code/util/Matrix3x3.cpp source-code/util/Matrix3x3.h source-code/Materials/DiffuseMaterial.cpp source-code/Materials/DiffuseMaterial.h source-code/util/HalveUnitSphereVectorGenerator.cpp source-code/util/HalveUnitSphereVectorGenerator.h source-code/Geometry/MeshGenerator.cpp source-code/Geometry/MeshGenerator.h source-code/Geometry/MeshTransformer.cpp source-code/Geometry/MeshTransformer.h source-code/SystemSpecificConstants.h source-code/MeshFileExporter.cpp source-code/MeshCollectionExporter/ExportStrings.h source-code/MeshCollectionExporter/MeshStringCreator.cpp source-code/MeshCollectionExporter/MeshStringCreator.h source-code/MeshCollectionExporter/MeshCollectionStringCreator.cpp source-code/MeshCollectionExporter/MeshCollectionStringCreator.h source-code/MeshColIectionImporter/MeshCollectionFileReader.cpp source-code/MeshColIectionImporter/MeshCollectionFileReader.h source-code/MeshColIectionImporter/MeshCollectionCreatorFromString.cpp source-code/MeshColIectionImporter/MeshCollectionCreatorFromString.h source-code/MeshColIectionImporter/MeshCreatorFromString.cpp source-code/MeshColIectionImporter/MeshCreatorFromString.h)
+        source-code/util/MatrixUtils.cpp source-code/util/MatrixUtils.h
+        source-code/Materials/ReflectiveMaterial.cpp
+        source-code/Materials/ReflectiveMaterial.h
+        source-code/util/Matrix3x3.cpp
+        source-code/util/Matrix3x3.h
+        source-code/Materials/DiffuseMaterial.cpp
+        source-code/Materials/DiffuseMaterial.h
+        source-code/util/HalveUnitSphereVectorGenerator.cpp
+        source-code/util/HalveUnitSphereVectorGenerator.h
+        source-code/Geometry/MeshGenerator.cpp
+        source-code/Geometry/MeshGenerator.h
+        source-code/Geometry/MeshTransformer.cpp
+        source-code/Geometry/MeshTransformer.h
+        source-code/SystemSpecificConstants.h
+        source-code/MeshFileExporter.cpp
+        source-code/MeshCollectionExporter/ExportStrings.h
+        source-code/MeshCollectionExporter/MeshStringCreator.cpp
+        source-code/MeshCollectionExporter/MeshStringCreator.h
+        source-code/MeshCollectionExporter/MeshCollectionStringCreator.cpp
+        source-code/MeshCollectionExporter/MeshCollectionStringCreator.h
+        source-code/MeshCollectionImporter/MeshCollectionCreatorFromString.cpp
+        source-code/MeshCollectionImporter/MeshCollectionCreatorFromString.h
+        source-code/MeshCollectionImporter/MeshCreatorFromString.cpp
+        source-code/MeshCollectionImporter/MeshCreatorFromString.h
+        source-code/MeshCollectionImporter/MeshCollectionFromFileReader.cpp
+        source-code/MeshCollectionImporter/MeshCollectionFromFileReader.h
+)

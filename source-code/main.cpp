@@ -7,6 +7,7 @@
 #include "Scene/Scene.h"
 #include "Materials/EmissiveMaterial.h"
 #include "SystemSpecificConstants.h"
+#include "MeshCollectionImporter/MeshCollectionFromFileReader.h"
 #include <random>
 #include <chrono>
 
@@ -20,26 +21,32 @@ int main() {
     int height = 500;
     bool smoothen = false;
 
+    string fullFileName = EXPORT_ADDRESS + "\\" + "myTestExport.txt";
 
-    auto start = chrono::steady_clock::now();
+    const MeshCollection &collection = MeshCollectionFromFileReader::readMeshCollectionFromFile(fullFileName);
 
-    EmissiveMaterial emissiveMaterial = EmissiveMaterial(1.0);
-    Mesh emissiveMesh = Mesh(&emissiveMaterial);
-    Triangle triangle = Triangle(&emissiveMesh, {10, 0, 5}, {10, 5, -5}, {10, 0, -5});
-    emissiveMesh.addTriangle(&triangle);
+    int i = 0;
 
-    vector<Mesh *> meshes{&emissiveMesh};
-    MeshCollection meshCollection = MeshCollection(meshes);
 
-    Scene scene = Scene(&meshCollection, width, height, smoothen, numberOfRaysPerBounce, bounceDepth);
-
-    scene.render(SAVE_ADDRESS);
-
-    auto end = chrono::steady_clock::now();
-    cout << endl;
-    cout << "Elapsed time in seconds : "
-         << chrono::duration_cast<chrono::seconds>(end - start).count()
-         << " sec";
+//    auto start = chrono::steady_clock::now();
+//
+//    EmissiveMaterial emissiveMaterial = EmissiveMaterial(1.0);
+//    Mesh emissiveMesh = Mesh(&emissiveMaterial);
+//    Triangle triangle = Triangle(&emissiveMesh, {10, 0, 5}, {10, 5, -5}, {10, 0, -5});
+//    emissiveMesh.addTriangle(&triangle);
+//
+//    vector<Mesh *> meshes{&emissiveMesh};
+//    MeshCollection meshCollection = MeshCollection(meshes);
+//
+//    Scene scene = Scene(&meshCollection, width, height, smoothen, numberOfRaysPerBounce, bounceDepth);
+//
+//    scene.render(SAVE_ADDRESS);
+//
+//    auto end = chrono::steady_clock::now();
+//    cout << endl;
+//    cout << "Elapsed time in seconds : "
+//         << chrono::duration_cast<chrono::seconds>(end - start).count()
+//         << " sec";
 
     return 0;
 }

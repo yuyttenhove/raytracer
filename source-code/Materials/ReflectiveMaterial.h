@@ -9,15 +9,15 @@
 #include "../RayUtils/Ray.h"
 #include "../Geometry/Triangle.h"
 #include "../RayUtils/RayIntensityCalculator.h"
-#include "../MeshExporter/ExportStrings.h"
+#include "../MeshCollectionExporter/ExportStrings.h"
 #include "Material.h"
 
 class ReflectiveMaterial : public Material {
 
-    float shininess;
+    double shininess;
 
 public:
-    ReflectiveMaterial(float shininess);
+    ReflectiveMaterial(double shininess);
 
     double calculateIntensity(
             Ray *ray,

@@ -17,6 +17,6 @@ EmissiveMaterial::calculateIntensity(
 }
 
 string EmissiveMaterial::getExportString() {
-    return emissiveMaterialExportName;
+    return emissiveMaterialExportName + materialPropertiesDelimiter + to_string(intensity);
 }
 
