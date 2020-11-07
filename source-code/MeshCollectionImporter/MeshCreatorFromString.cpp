@@ -52,7 +52,7 @@ vector<Triangle *> MeshCreatorFromString::createTrianglesFromString(string trian
         trianglesString.erase(0, pos + trianglesDelimiter.length());
     }
 
-    Triangle *newTriangle = createTriangleFromString(tempTriangleSubString, mesh);
+    Triangle *newTriangle = createTriangleFromString(trianglesString, mesh);
     triangles.push_back(newTriangle);
 
     return triangles;
@@ -76,11 +76,11 @@ Triangle *MeshCreatorFromString::createTriangleFromString(string triangleString,
 
 Vector3D *MeshCreatorFromString::createVector3dFromString(string vector3DString) {
 
-    size_t position = vector3DString.find(trianglePointDelimiter);
+    size_t position = vector3DString.find(xyzDelimiter);
     string xString = vector3DString.substr(0, position);
     string yzString = vector3DString.erase(0, position + xyzDelimiter.length());
 
-    position = yzString.find(trianglePointDelimiter);
+    position = yzString.find(xyzDelimiter);
     string yString = yzString.substr(0, position);
     string zString = yzString.erase(0, position + xyzDelimiter.length());
 

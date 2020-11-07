@@ -6,8 +6,7 @@
 #include <fstream>
 #include "Geometry/Mesh.h"
 #include "SystemSpecificConstants.h"
-#include "MeshExporter/MeshCollectionStringCreator.h"
-#include "Materials/EmissiveMaterial.h"
+#include "MeshCollectionExporter/MeshCollectionStringCreator.h"
 #include "Materials/DiffuseMaterial.h"
 
 using namespace std;

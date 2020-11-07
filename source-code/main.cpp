@@ -21,6 +21,11 @@ int main() {
     int height = 500;
     bool smoothen = false;
 
+    string a = "-500.000";
+    double b = stod(a);
+    cout << b << endl;
+
+
     string fullFileName = EXPORT_ADDRESS + "\\" + "myTestExport.txt";
 
     const MeshCollection &collection = MeshCollectionFromFileReader::readMeshCollectionFromFile(fullFileName);

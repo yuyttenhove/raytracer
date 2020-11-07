@@ -15,7 +15,7 @@ const string reflectiveMaterialExportName = "REFLECTIVE";
 
 const string meshDelimiter = "\n";
 const string materialDelimiter = "&";
-const string materialPropertiesDelimiter = "-";
+const string materialPropertiesDelimiter = "_";
 const string trianglesDelimiter = ";";
 const string trianglePointDelimiter = "|";
 const string xyzDelimiter = ",";

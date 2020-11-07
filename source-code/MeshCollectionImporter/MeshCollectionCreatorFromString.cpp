@@ -15,7 +15,7 @@ MeshCollection MeshCollectionCreatorFromString::createMeshCollectionFromString(s
         meshCollectionString.erase(0, pos + meshDelimiter.length());
     }
 
-    Mesh *newMesh = MeshCreatorFromString::createMeshFromString(tempMeshSubString);
+    Mesh *newMesh = MeshCreatorFromString::createMeshFromString(meshCollectionString);
     meshes.push_back(newMesh);
     return MeshCollection(meshes);
 }
