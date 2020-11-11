@@ -21,15 +21,9 @@ double RayIntensityCalculator::calculateIntensityRay(Ray *ray) {
 }
 
 RayIntensityCalculator::RayIntensityCalculator(
-        int numberOfRaysPerBounce,
         int bounceDepth,
         MeshCollection *meshCollection
 ) :
-        numberOfRaysPerBounce(numberOfRaysPerBounce),
         bounceDepth(bounceDepth),
         meshCollection(meshCollection) {}
-
-int RayIntensityCalculator::getNumberOfRaysPerBounce() const {
-    return numberOfRaysPerBounce;
-}
 

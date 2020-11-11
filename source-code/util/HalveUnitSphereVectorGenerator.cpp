@@ -7,6 +7,7 @@
 #include "HalveUnitSphereVectorGenerator.h"
 #include <cmath>
 #include <random>
+#include "../util/Matrix3x3.h"
 
 Vector3D HalveUnitSphereVectorGenerator::generateVectorHalveUnitSphere() {
 
@@ -37,4 +38,24 @@ Vector3D HalveUnitSphereVectorGenerator::generateCosineWeightedVector() {
     double z = cosineTheta;
 
     return {x, y, z};
+}
+
+Vector3D HalveUnitSphereVectorGenerator::generateCosineWeightedVectorAroundNormal(Vector3D normal) {
+    Vector3D cosineWeightedVector = generateCosineWeightedVector();
+    Vector3D rotationAxis = Vector3D(0, 0, 1).cross(normal);
+
+    Matrix3x3 rotationMatrix;
+    if (rotationAxis.length() < 0.0001) {
+        double res = normal.dot({0, 0, 1});
+        rotationMatrix = Matrix3x3();
+        rotationMatrix.setElement(0, 0, 1);
+        rotationMatrix.setElement(1, 1, 1);
+        rotationMatrix.setElement(2, 2, res);
+    } else {
+        double cosTheta = normal.getZ();
+        double sinTheta = sqrt((1 - cosTheta) * (1 + cosTheta));
+        rotationMatrix = Matrix3x3(sinTheta, cosTheta, rotationAxis);
+    }
+
+    return rotationMatrix.dot(cosineWeightedVector);
 }

@@ -41,7 +41,7 @@ int main() {
 //    vector<Mesh *> meshes{&lightSource,sphere};
 //    MeshCollection meshCollection = MeshCollection(meshes);
 
-    Scene scene = Scene(&meshCollection, width, height, smoothen, numberOfRaysPerBounce, bounceDepth);
+    Scene scene = Scene(&meshCollection, width, height, smoothen, bounceDepth);
 
     scene.render(SAVE_ADDRESS);
 

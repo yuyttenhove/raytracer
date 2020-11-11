@@ -7,10 +7,6 @@
 
 
 #include "Material.h"
-#include <cmath>
-#include "../MeshCollectionExporter/ExportStrings.h"
-#include "../util/HalveUnitSphereVectorGenerator.h"
-#include "../util/Matrix3x3.h"
 
 
 class DiffuseMaterial : public Material {
@@ -28,7 +24,6 @@ public:
     ) override;
 
     virtual string getExportString() override;
-
 
 };
 
