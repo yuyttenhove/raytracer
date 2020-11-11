@@ -13,6 +13,7 @@ class Camera {
     int width;
     int height;
     Vector3D origin = {0, 0, 0};
+    double viewingAngle;
     RayIntensityCalculator rayIntensityCalculator;
 
 
@@ -22,7 +23,7 @@ private:
     void printProgress(int row, int column) const;
 
 public:
-    Camera(int width, int height, const RayIntensityCalculator &rayIntensityCalculator);
+    Camera(int width, int height, double viewingAngle, const RayIntensityCalculator &rayIntensityCalculator);
 
     Picture takePicture(int numberOfSamples, bool msaa);
 

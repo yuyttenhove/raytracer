@@ -13,9 +13,9 @@ void Scene::render(string fileName, int numberOfSamples, bool msaa) {
     picture.writeToFile(fileName);
 }
 
-Scene::Scene(MeshCollection *meshCollection, int width, int height, bool smoothen, int bounceDepth)
+Scene::Scene(MeshCollection *meshCollection, int width, int height, double viewingAngle, bool smoothen, int bounceDepth)
 : smoothen(smoothen)
 {
     RayIntensityCalculator rayIntensityCalculator = RayIntensityCalculator(bounceDepth, meshCollection);
-    camera = new Camera(width, height, rayIntensityCalculator);
+    camera = new Camera(width, height, viewingAngle, rayIntensityCalculator);
 }

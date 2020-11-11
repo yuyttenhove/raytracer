@@ -21,6 +21,7 @@ int main() {
     int bounceDepth = 3;
     int width = 500;
     int height = 500;
+    double viewingAngle = (double) 60 / 180 * M_PI;
     bool smoothen = false;
     bool msaa = true;
 
@@ -31,8 +32,8 @@ int main() {
 //    MeshCollection meshCollection = MeshCollectionFromFileReader::readMeshCollectionFromFile(fullFileName);
 
     DiffuseMaterial diffuseMaterial = DiffuseMaterial(0.7);
-    Mesh *sphere = MeshGenerator::generateSphere(&diffuseMaterial, 3);
-    MeshTransformer::translateMesh(sphere, {3, 0, 0});
+    Mesh *sphere = MeshGenerator::generateSphere(&diffuseMaterial, 2);
+    MeshTransformer::translateMesh(sphere, {6, 0, 1});
 
     EmissiveMaterial emissiveMaterial = EmissiveMaterial(1.0);
     Mesh lightSource = Mesh(&emissiveMaterial);
@@ -42,12 +43,12 @@ int main() {
     ReflectiveMaterial reflectiveMaterial = ReflectiveMaterial(.6);
     Mesh *mirror = MeshGenerator::generateUnitCube(&reflectiveMaterial);
     MeshTransformer::scaleToOrigin(mirror, 100);
-    MeshTransformer::translateMesh(mirror, {3, 0, -51});
+    MeshTransformer::translateMesh(mirror, {6, 0, -50.01});
 
     vector<Mesh *> meshes{&lightSource,sphere, mirror};
     MeshCollection meshCollection = MeshCollection(meshes);
 
-    Scene scene = Scene(&meshCollection, width, height, smoothen, bounceDepth);
+    Scene scene = Scene(&meshCollection, width, height, viewingAngle, smoothen, bounceDepth);
 
     scene.render(SAVE_ADDRESS, numberOfSamples, msaa);
 

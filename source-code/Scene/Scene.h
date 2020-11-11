@@ -16,7 +16,7 @@ class Scene {
     bool smoothen;
 
 public:
-    Scene(MeshCollection *meshCollection, int width, int height, bool smoothen, int bounceDepth);
+    Scene(MeshCollection *meshCollection, int width, int height, double viewingAngle, bool smoothen, int bounceDepth);
 
     void render(string fileName, int numberOfSamples, bool msaa=true);
 };

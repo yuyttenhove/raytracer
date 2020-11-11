@@ -33,20 +33,22 @@ Picture Camera::takePicture(int numberOfSamples, bool msaa) {
 
 Vector3D Camera::getVecToPixel(int i, int j, bool randomize) {
     double scaleFactor = 2. / (width);
+    double viewingAngleFactor = tan(viewingAngle / 2);
     double y, z;
     if (randomize) {
-        y = -(scaleFactor * (i + RandomUtils::randomUniform()) - 1);
-        z = scaleFactor * (j + RandomUtils::randomUniform() - (double) height / 2);
+        y = - viewingAngleFactor * (scaleFactor * (i + RandomUtils::randomUniform()) - 1);
+        z = viewingAngleFactor * scaleFactor * (j + RandomUtils::randomUniform() - (double) height / 2);
     } else {
-        y = -(scaleFactor * (i + .5) - 1);
-        z = scaleFactor * (j + .5 - (double) height / 2);
+        y = - viewingAngleFactor * (scaleFactor * (i + .5) - 1);
+        z = viewingAngleFactor * scaleFactor * (j + .5 - (double) height / 2);
     }
     return Vector3D(1, y, z).normalize();
 }
 
-Camera::Camera(int width, int height, const RayIntensityCalculator &rayIntensityCalculator) :
+Camera::Camera(int width, int height, double viewingAngle, const RayIntensityCalculator &rayIntensityCalculator) :
         width(width),
         height(height),
+        viewingAngle(viewingAngle),
         rayIntensityCalculator(rayIntensityCalculator) {}
 
 void Camera::printProgress(int row, int column) const {
