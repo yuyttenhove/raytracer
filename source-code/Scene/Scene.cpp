@@ -4,10 +4,9 @@
 
 #include "Scene.h"
 #include <string>
-#include <X11/Xlib.h>
 
-void Scene::render(string fileName, int numberOfSamples) {
-    Picture picture = camera->takePicture(numberOfSamples, True);
+void Scene::render(string fileName, int numberOfSamples, bool msaa) {
+    Picture picture = camera->takePicture(numberOfSamples, msaa);
     if (smoothen) {
         picture.smoothen();
     }

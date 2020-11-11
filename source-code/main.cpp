@@ -22,6 +22,7 @@ int main() {
     int width = 500;
     int height = 500;
     bool smoothen = false;
+    bool msaa = false;
 
 
     auto start = chrono::steady_clock::now();
@@ -43,7 +44,7 @@ int main() {
 
     Scene scene = Scene(&meshCollection, width, height, smoothen, bounceDepth);
 
-    scene.render(SAVE_ADDRESS, numberOfSamples);
+    scene.render(SAVE_ADDRESS, numberOfSamples, msaa);
 
     auto end = chrono::steady_clock::now();
     cout << endl;
