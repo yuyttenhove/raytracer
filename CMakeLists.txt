@@ -54,7 +54,7 @@ add_executable(
         source-code/MeshCollectionImporter/MeshCreatorFromString.h
         source-code/MeshCollectionImporter/MeshCollectionFromFileReader.cpp
         source-code/MeshCollectionImporter/MeshCollectionFromFileReader.h
-)
+        source-code/SystemSpecificConstants.h)
 
 
 add_executable(
@@ -107,4 +107,4 @@ add_executable(
         source-code/MeshCollectionImporter/MeshCreatorFromString.h
         source-code/MeshCollectionImporter/MeshCollectionFromFileReader.cpp
         source-code/MeshCollectionImporter/MeshCollectionFromFileReader.h
-)
+        source-code/SystemSpecificConstants.h)

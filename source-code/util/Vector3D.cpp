@@ -3,6 +3,7 @@
 //
 
 #include "Vector3D.h"
+#include "../MeshCollectionExporter/ExportStrings.h"
 
 double Vector3D::getX() const {
     return x;

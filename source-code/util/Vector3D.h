@@ -8,7 +8,6 @@
 #include <cmath>
 #include <iostream>
 #include <string>
-#include "../MeshCollectionExporter/ExportStrings.h"
 
 using namespace std;
 

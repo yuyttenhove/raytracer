@@ -26,7 +26,7 @@ int main() {
 
     auto start = chrono::steady_clock::now();
 
-    string fullFileName = EXPORT_ADDRESS + "\\" + "HalfBacklitSphere.txt";
+    string fullFileName = EXPORT_ADDRESS + PATH_DELIMITER + "HalfBacklitSphere.txt";
     MeshCollection meshCollection = MeshCollectionFromFileReader::readMeshCollectionFromFile(fullFileName);
 
 //    DiffuseMaterial diffuseMaterial = DiffuseMaterial(0.7);

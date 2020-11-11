@@ -3,6 +3,7 @@
 //
 
 #include "MeshStringCreator.h"
+#include "../MeshCollectionExporter/ExportStrings.h"
 
 string MeshStringCreator::generateMeshString(Mesh *mesh) {
     string meshString = mesh->getMaterial()->getExportString();

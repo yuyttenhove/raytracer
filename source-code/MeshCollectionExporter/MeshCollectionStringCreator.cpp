@@ -3,6 +3,7 @@
 //
 
 #include "MeshCollectionStringCreator.h"
+#include "../MeshCollectionExporter/ExportStrings.h"
 
 string MeshCollectionStringCreator::generateMeshCollectionString(MeshCollection meshCollection) {
     vector<Mesh *> meshes = meshCollection.getMeshes();
