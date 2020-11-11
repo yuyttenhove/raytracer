@@ -8,7 +8,7 @@
 double RayIntensityCalculator::calculateIntensityRay(Ray &ray) {
     while (ray.getNumberOfBouncesBefore() <= bounceDepth) {
         Vector3D interSectionPoint = Vector3D();
-        Triangle *triangle = meshCollection->getClosestTriangle(ray, &interSectionPoint);
+        Triangle *triangle = meshCollection->getClosestTriangle(ray, interSectionPoint);
         if (triangle == nullptr) {
             break;
         }

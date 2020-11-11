@@ -7,6 +7,7 @@
 
 
 #include "../util/Vector3D.h"
+#include "../Geometry/Triangle.h"
 
 class Ray {
     Vector3D direction;
@@ -31,6 +32,7 @@ public:
 
     void bounce(const Vector3D &direction, const Vector3D &startPoint, double intensity);
 
+    bool intersectsTriangle(const Triangle &triangle, float *pathLength) const;
 };
 
 

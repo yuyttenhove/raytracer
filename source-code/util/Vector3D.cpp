@@ -31,14 +31,14 @@ void Vector3D::setZ(double z) {
 
 Vector3D::Vector3D(double x, double y, double z) : x(x), y(y), z(z) {}
 
-Vector3D Vector3D::cross(Vector3D otherVec) const {
+Vector3D Vector3D::cross(const Vector3D &otherVec) const {
     double newX = y * otherVec.z - z * otherVec.y;
     double newY = z * otherVec.x - x * otherVec.z;
     double newZ = x * otherVec.y - y * otherVec.x;
     return {newX, newY, newZ};
 }
 
-double Vector3D::dot(Vector3D otherVec) const {
+double Vector3D::dot(const Vector3D &otherVec) const {
     return x * otherVec.x + y * otherVec.y + z * otherVec.z;
 }
 
@@ -51,11 +51,11 @@ Vector3D Vector3D::normalize() {
 }
 
 
-Vector3D Vector3D::operator+(Vector3D otherVec) const {
+Vector3D Vector3D::operator+(const Vector3D &otherVec) const {
     return {otherVec.x + x, otherVec.y + y, otherVec.z + z};
 }
 
-Vector3D Vector3D::operator-(Vector3D otherVec) const {
+Vector3D Vector3D::operator-(const Vector3D &otherVec) const {
     return {x - otherVec.x, y - otherVec.y, z - otherVec.z};
 }
 
@@ -69,7 +69,7 @@ Vector3D::Vector3D() {
     this->z = 0;
 }
 
-string Vector3D::toExportString() {
+string Vector3D::toExportString() const {
     return to_string(x) + xyzDelimiter + to_string(y) + xyzDelimiter + to_string(z);
 }
 

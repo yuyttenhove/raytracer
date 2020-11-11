@@ -17,14 +17,12 @@ class MeshCollection {
     vector<Mesh *> meshes;
 
 public:
-    MeshCollection(const vector<Mesh *> meshes);
+    MeshCollection(vector<Mesh *> meshes);
 
-    Triangle *getClosestTriangle(Ray &ray, Vector3D *interSectionPoint);
+    Triangle *getClosestTriangle(const Ray &ray, Vector3D &interSectionPoint);
 
     const vector<Mesh *> &getMeshes() const;
 
-private:
-    bool rayIntersectsTriangle(Vector3D rayOrigin, Vector3D rayVector, Triangle *inTriangle, float *pathLength);
 };
 
 
