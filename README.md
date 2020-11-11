@@ -8,7 +8,7 @@
 - [x] Importance sampling
 - [x] Implement MSAA in camera
 - [x] Redo recursive ray intensity calculation (only one bounce per ray per hit, shoot multiple rays (samples) per pixel)
-- [ ] Remove hacky code DiffuseMaterial (l 25)
+- [ ] Remove hacky code DiffuseMaterial (l 25) (moved to `HalveUnitSphereVectorGenerator::generateCosineWeightedVectorAroundNormal`)
 - [ ] Extend MeshGenerator (circle, square, sphere, cone, suzanne?, ...)
 - [ ] Get OpenCV working
 - [ ] Customizable fov
