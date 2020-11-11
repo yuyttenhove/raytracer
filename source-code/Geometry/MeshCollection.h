@@ -19,7 +19,7 @@ class MeshCollection {
 public:
     MeshCollection(const vector<Mesh *> meshes);
 
-    Triangle *getClosestTriangle(Ray *ray, Vector3D *interSectionPoint);
+    Triangle *getClosestTriangle(Ray &ray, Vector3D *interSectionPoint);
 
     const vector<Mesh *> &getMeshes() const;
 

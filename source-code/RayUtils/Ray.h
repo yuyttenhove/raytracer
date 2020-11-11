@@ -11,10 +11,13 @@
 class Ray {
     Vector3D direction;
     Vector3D startPoint;
+
+private:
+    double intensity;
     int numberOfBouncesBefore;
 
 public:
-    Ray(const Vector3D &direction, const Vector3D &startPoint, int numberOfBouncesBefore = 0);
+    Ray(const Vector3D &direction, const Vector3D &startPoint, double intensity = 1, int numberOfBouncesBefore = 0);
 
     const Vector3D &getDirection() const;
 
@@ -22,7 +25,12 @@ public:
 
     int getNumberOfBouncesBefore() const;
 
-    void incrementNumberOfBounces();
+    double getIntensity() const;
+
+    void setIntensity(double intensity);
+
+    void bounce(const Vector3D &direction, const Vector3D &startPoint, double intensity);
+
 };
 
 

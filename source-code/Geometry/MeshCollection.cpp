@@ -7,16 +7,16 @@
 
 MeshCollection::MeshCollection(const vector<Mesh *> meshes) : meshes(meshes) {}
 
-Triangle *MeshCollection::getClosestTriangle(Ray *ray, Vector3D *interSectionPoint) {
+Triangle *MeshCollection::getClosestTriangle(Ray &ray, Vector3D *interSectionPoint) {
     float t = FLT_MAX;
     float pathLength;
     Triangle *closestTriangle = nullptr;
 
-    const Vector3D &origin = ray->getStartPoint();
-    const Vector3D &direction = ray->getDirection();
+    const Vector3D &origin = ray.getStartPoint();
+    const Vector3D &direction = ray.getDirection();
     for (Mesh *mesh : meshes) {
         for (auto triangle:mesh->getTriangles()) {
-            bool triangleFacesRay = triangle->getNormal().dot(ray->getDirection()) < 0;
+            bool triangleFacesRay = triangle->getNormal().dot(ray.getDirection()) < 0;
 
             if (triangleFacesRay) {
                 bool intersects = this->rayIntersectsTriangle(

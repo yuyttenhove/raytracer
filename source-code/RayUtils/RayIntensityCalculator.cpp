@@ -5,9 +5,9 @@
 #include "RayIntensityCalculator.h"
 #include "../Geometry/MeshCollection.h"
 
-double RayIntensityCalculator::calculateIntensityRay(Ray *ray) {
+double RayIntensityCalculator::calculateIntensityRay(Ray &ray) {
 
-    if (ray->getNumberOfBouncesBefore() > bounceDepth) {
+    if (ray.getNumberOfBouncesBefore() > bounceDepth) {
         return 0;
     }
 
@@ -15,9 +15,14 @@ double RayIntensityCalculator::calculateIntensityRay(Ray *ray) {
     Triangle *triangle = meshCollection->getClosestTriangle(ray, &interSectionPoint);
     if (triangle == nullptr) {
         return 0;
-    } else {
-        return triangle->getMesh()->getMaterial()->calculateIntensity(ray, triangle, this, &interSectionPoint);
     }
+
+    bool bounced = triangle->getMesh()->getMaterial()->bounceRay(ray, triangle->getNormal(), interSectionPoint);
+    if (!bounced) {
+        return ray.getIntensity();
+    }
+
+    return calculateIntensityRay(ray);  // tail recursion is faster
 }
 
 RayIntensityCalculator::RayIntensityCalculator(

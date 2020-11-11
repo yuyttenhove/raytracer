@@ -23,7 +23,7 @@ Picture Camera::takePicture(int numberOfSamples, bool msaa) {
             for (int s = 0; s < numberOfSamples; ++s){
                 Vector3D vectorToPixel = getVecToPixel(i, j, msaa);
                 Ray ray = Ray(vectorToPixel, origin);
-                totalIntensity += rayIntensityCalculator.calculateIntensityRay(&ray);
+                totalIntensity += rayIntensityCalculator.calculateIntensityRay(ray);
             }
             intensityValues[height - j - 1][i] = totalIntensity / numberOfSamples;
         }

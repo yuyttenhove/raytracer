@@ -6,14 +6,9 @@
 
 EmissiveMaterial::EmissiveMaterial(double intensity) : intensity(intensity) {}
 
-double
-EmissiveMaterial::calculateIntensity(
-        Ray *ray,
-        Triangle *triangle,
-        RayIntensityCalculator *rayIntensityCalculator,
-        Vector3D *interSectionPoint
-) {
-    return intensity;
+bool EmissiveMaterial::bounceRay(Ray &ray, const Vector3D &normal, const Vector3D &interSectionPoint) {
+    ray.setIntensity(intensity * ray.getIntensity());
+    return false;
 }
 
 string EmissiveMaterial::getExportString() {

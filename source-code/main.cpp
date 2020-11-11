@@ -22,7 +22,7 @@ int main() {
     int width = 500;
     int height = 500;
     bool smoothen = false;
-    bool msaa = false;
+    bool msaa = true;
 
 
     auto start = chrono::steady_clock::now();

@@ -20,7 +20,7 @@ public:
 
     RayIntensityCalculator(int bounceDepth, MeshCollection *meshCollection);
 
-    double calculateIntensityRay(Ray *ray);
+    double calculateIntensityRay(Ray &ray);
 
 };
 

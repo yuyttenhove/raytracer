@@ -8,19 +8,10 @@
 
 DiffuseMaterial::DiffuseMaterial(double albedo) : albedo(albedo) {}
 
-double DiffuseMaterial::calculateIntensity(
-        Ray *ray,
-        Triangle *triangle,
-        RayIntensityCalculator *rayIntensityCalculator,
-        Vector3D *interSectionPoint
-) {
-    int bouncesBefore = ray->getNumberOfBouncesBefore();
-    Vector3D normal = triangle->getNormal();
-
+bool DiffuseMaterial::bounceRay(Ray &ray, const Vector3D &normal, const Vector3D &interSectionPoint) {
     Vector3D bounceDirection = HalveUnitSphereVectorGenerator::generateCosineWeightedVectorAroundNormal(normal);
-    Ray bounce = Ray(bounceDirection, *interSectionPoint, bouncesBefore + 1);
-
-    return albedo * rayIntensityCalculator->calculateIntensityRay(&bounce);
+    ray.bounce(bounceDirection, interSectionPoint, albedo * ray.getIntensity());
+    return true;
 }
 
 string DiffuseMaterial::getExportString() {
