@@ -6,23 +6,19 @@
 #include "../Geometry/MeshCollection.h"
 
 double RayIntensityCalculator::calculateIntensityRay(Ray &ray) {
+    while (ray.getNumberOfBouncesBefore() <= bounceDepth) {
+        Vector3D interSectionPoint = Vector3D();
+        Triangle *triangle = meshCollection->getClosestTriangle(ray, &interSectionPoint);
+        if (triangle == nullptr) {
+            break;
+        }
 
-    if (ray.getNumberOfBouncesBefore() > bounceDepth) {
-        return 0;
+        bool bounced = triangle->getMesh()->getMaterial()->bounceRay(ray, triangle->getNormal(), interSectionPoint);
+        if (!bounced) {
+            return ray.getIntensity();
+        }
     }
-
-    Vector3D interSectionPoint = Vector3D();
-    Triangle *triangle = meshCollection->getClosestTriangle(ray, &interSectionPoint);
-    if (triangle == nullptr) {
-        return 0;
-    }
-
-    bool bounced = triangle->getMesh()->getMaterial()->bounceRay(ray, triangle->getNormal(), interSectionPoint);
-    if (!bounced) {
-        return ray.getIntensity();
-    }
-
-    return calculateIntensityRay(ray);  // tail recursion is faster
+    return 0;
 }
 
 RayIntensityCalculator::RayIntensityCalculator(
