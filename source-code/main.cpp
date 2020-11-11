@@ -17,7 +17,7 @@ using namespace std;
 
 int main() {
 
-    int numberOfRaysPerBounce = 10;
+    int numberOfSamples = 10;
     int bounceDepth = 3;
     int width = 500;
     int height = 500;
@@ -43,7 +43,7 @@ int main() {
 
     Scene scene = Scene(&meshCollection, width, height, smoothen, bounceDepth);
 
-    scene.render(SAVE_ADDRESS);
+    scene.render(SAVE_ADDRESS, numberOfSamples);
 
     auto end = chrono::steady_clock::now();
     cout << endl;

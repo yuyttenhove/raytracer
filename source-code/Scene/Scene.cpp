@@ -5,8 +5,8 @@
 #include "Scene.h"
 #include <string>
 
-void Scene::render(string fileName) {
-    Picture picture = camera->takePicture();
+void Scene::render(string fileName, int numberOfSamples) {
+    Picture picture = camera->takePicture(numberOfSamples);
     if (smoothen) {
         picture.smoothen();
     }

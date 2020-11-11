@@ -5,14 +5,13 @@
 #define _USE_MATH_DEFINES
 
 #include "HalveUnitSphereVectorGenerator.h"
-#include <cmath>
-#include <random>
+#include "../util/RandomUtils.h"
 #include "../util/Matrix3x3.h"
 
 Vector3D HalveUnitSphereVectorGenerator::generateVectorHalveUnitSphere() {
 
-    double random1 = rand() / (RAND_MAX + 1.);
-    double random2 = rand() / (RAND_MAX + 1.);
+    double random1 = RandomUtils::randomUniform();
+    double random2 = RandomUtils::randomUniform();
 
     double phi = 2 * M_PI * random1;
     double cosineTheta = random2;
@@ -26,8 +25,8 @@ Vector3D HalveUnitSphereVectorGenerator::generateVectorHalveUnitSphere() {
 }
 
 Vector3D HalveUnitSphereVectorGenerator::generateCosineWeightedVector() {
-    double random1 = rand() / (RAND_MAX + 1.);
-    double random2 = rand() / (RAND_MAX + 1.);
+    double random1 = RandomUtils::randomUniform();
+    double random2 = RandomUtils::randomUniform();
 
     double phi = 2 * M_PI * random1;
     double cosineTheta = sqrt(1 - random2);

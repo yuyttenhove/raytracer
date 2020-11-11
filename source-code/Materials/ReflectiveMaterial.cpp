@@ -15,13 +15,10 @@ double ReflectiveMaterial::calculateIntensity(
     int numberOfBounces = ray->getNumberOfBouncesBefore();
     Vector3D direction = ray->getDirection();
     Vector3D normal = triangle->getNormal();
-    Vector3D reflectedDirection = direction - 2 * (direction.dot(normal)) * normal;
 
+    Vector3D reflectedDirection = direction - 2 * (direction.dot(normal)) * normal;
     Ray reflectedRay = Ray(reflectedDirection, *interSectionPoint, numberOfBounces + 1);
-    double d = rayIntensityCalculator->calculateIntensityRay(&reflectedRay);
-    if (d < 0.4) {
-        int i = 0;
-    }
+
     return rayIntensityCalculator->calculateIntensityRay(&reflectedRay) * shininess;
 }
 
