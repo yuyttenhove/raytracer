@@ -28,19 +28,24 @@ int main() {
     auto start = chrono::steady_clock::now();
 
     string fullFileName = EXPORT_ADDRESS + PATH_DELIMITER + "HalfBacklitSphere.txt";
-    MeshCollection meshCollection = MeshCollectionFromFileReader::readMeshCollectionFromFile(fullFileName);
+//    MeshCollection meshCollection = MeshCollectionFromFileReader::readMeshCollectionFromFile(fullFileName);
 
-//    DiffuseMaterial diffuseMaterial = DiffuseMaterial(0.7);
-//    Mesh *sphere = MeshGenerator::generateSphere(&diffuseMaterial, 3);
-//    MeshTransformer::translateMesh(sphere, {3, 0, 0});
-//
-//    EmissiveMaterial emissiveMaterial = EmissiveMaterial(1.0);
-//    Mesh lightSource = Mesh(&emissiveMaterial);
-//    Triangle triangle = Triangle(&lightSource, {-1, 1000, -1000}, {-1, 0, 1000}, {-1, 0, -1000});
-//    lightSource.addTriangle(&triangle);
-//
-//    vector<Mesh *> meshes{&lightSource,sphere};
-//    MeshCollection meshCollection = MeshCollection(meshes);
+    DiffuseMaterial diffuseMaterial = DiffuseMaterial(0.7);
+    Mesh *sphere = MeshGenerator::generateSphere(&diffuseMaterial, 3);
+    MeshTransformer::translateMesh(sphere, {3, 0, 0});
+
+    EmissiveMaterial emissiveMaterial = EmissiveMaterial(1.0);
+    Mesh lightSource = Mesh(&emissiveMaterial);
+    Triangle triangle = Triangle(&lightSource, {-1, 1000, -1000}, {-1, 0, 1000}, {-1, 0, -1000});
+    lightSource.addTriangle(&triangle);
+
+    ReflectiveMaterial reflectiveMaterial = ReflectiveMaterial(.6);
+    Mesh *mirror = MeshGenerator::generateUnitCube(&reflectiveMaterial);
+    MeshTransformer::scaleToOrigin(mirror, 100);
+    MeshTransformer::translateMesh(mirror, {3, 0, -51});
+
+    vector<Mesh *> meshes{&lightSource,sphere, mirror};
+    MeshCollection meshCollection = MeshCollection(meshes);
 
     Scene scene = Scene(&meshCollection, width, height, smoothen, bounceDepth);
 
