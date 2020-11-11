@@ -17,7 +17,7 @@ using namespace std;
 
 int main() {
 
-    int numberOfSamples = 10;
+    int numberOfSamples = 100;
     int bounceDepth = 3;
     int width = 500;
     int height = 500;

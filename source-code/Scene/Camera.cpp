@@ -8,7 +8,7 @@
 #include "../util/RandomUtils.h"
 #include <vector>
 
-Picture Camera::takePicture(int numberOfSamples) {
+Picture Camera::takePicture(int numberOfSamples, bool msaa) {
 
     vector<vector<double>> intensityValues = MatrixUtils::initializeMatrixZero(height, width);
     int counter = 0;
@@ -21,7 +21,7 @@ Picture Camera::takePicture(int numberOfSamples) {
             }
             double totalIntensity = 0;
             for (int s = 0; s < numberOfSamples; ++s){
-                Vector3D vectorToPixel = getVecToPixel(i, j);
+                Vector3D vectorToPixel = getVecToPixel(i, j, msaa);
                 Ray ray = Ray(vectorToPixel, origin);
                 totalIntensity += rayIntensityCalculator.calculateIntensityRay(&ray);
             }
@@ -31,10 +31,16 @@ Picture Camera::takePicture(int numberOfSamples) {
     return Picture(intensityValues);
 }
 
-Vector3D Camera::getVecToPixel(int i, int j) {
+Vector3D Camera::getVecToPixel(int i, int j, bool randomize) {
     double scaleFactor = 2. / (width);
-    double y = -(scaleFactor * (i + RandomUtils::randomUniform()) - 1);
-    double z = scaleFactor * (j + RandomUtils::randomUniform() - (double) height / 2);
+    double y, z;
+    if (randomize) {
+        y = -(scaleFactor * (i + RandomUtils::randomUniform()) - 1);
+        z = scaleFactor * (j + RandomUtils::randomUniform() - (double) height / 2);
+    } else {
+        y = -(scaleFactor * (i + .5) - 1);
+        z = scaleFactor * (j + .5 - (double) height / 2);
+    }
     return Vector3D(1, y, z).normalize();
 }
 

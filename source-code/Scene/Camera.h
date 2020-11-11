@@ -17,14 +17,14 @@ class Camera {
 
 
 private:
-    Vector3D getVecToPixel(int i, int j);
+    Vector3D getVecToPixel(int i, int j, bool randomize);
 
     void printProgress(int row, int column) const;
 
 public:
     Camera(int width, int height, const RayIntensityCalculator &rayIntensityCalculator);
 
-    Picture takePicture(int numberOfSamples);
+    Picture takePicture(int numberOfSamples, bool msaa);
 
 };
 
