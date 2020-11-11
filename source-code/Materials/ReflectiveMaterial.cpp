@@ -6,23 +6,12 @@
 
 ReflectiveMaterial::ReflectiveMaterial(double shininess) : shininess(shininess) {}
 
-double ReflectiveMaterial::calculateIntensity(
-        Ray *ray,
-        Triangle *triangle,
-        RayIntensityCalculator *rayIntensityCalculator,
-        Vector3D *interSectionPoint
-) {
-    int numberOfBounces = ray->getNumberOfBouncesBefore();
-    Vector3D direction = ray->getDirection();
-    Vector3D normal = triangle->getNormal();
+bool ReflectiveMaterial::bounceRay(Ray &ray, const Vector3D &normal, const Vector3D &interSectionPoint) {
+    Vector3D direction = ray.getDirection();
     Vector3D reflectedDirection = direction - 2 * (direction.dot(normal)) * normal;
 
-    Ray reflectedRay = Ray(reflectedDirection, *interSectionPoint, numberOfBounces + 1);
-    double d = rayIntensityCalculator->calculateIntensityRay(&reflectedRay);
-    if (d < 0.4) {
-        int i = 0;
-    }
-    return rayIntensityCalculator->calculateIntensityRay(&reflectedRay) * shininess;
+    ray.bounce(reflectedDirection, interSectionPoint, shininess * ray.getIntensity());
+    return true;
 }
 
 string ReflectiveMaterial::getExportString() {

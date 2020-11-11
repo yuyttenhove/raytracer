@@ -36,21 +36,21 @@ public:
 
     void setZ(double z);
 
-    Vector3D operator+(Vector3D otherVec) const;
+    Vector3D operator+(const Vector3D &otherVec) const;
 
-    Vector3D operator-(Vector3D otherVec) const;
+    Vector3D operator-(const Vector3D &otherVec) const;
 
     Vector3D operator*(double scalar) const;
 
-    double dot(Vector3D otherVec) const;
+    double dot(const Vector3D &otherVec) const;
 
     double length() const;
 
     Vector3D normalize();
 
-    Vector3D cross(Vector3D otherVec) const;
+    Vector3D cross(const Vector3D &otherVec) const;
 
-    string toExportString();
+    string toExportString() const;
 
 };
 

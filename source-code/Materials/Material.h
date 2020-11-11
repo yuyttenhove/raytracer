@@ -14,12 +14,7 @@ class Material {
 
 public:
 
-    virtual double calculateIntensity(
-            Ray *ray,
-            Triangle *triangle,
-            RayIntensityCalculator *rayIntensityCalculator,
-            Vector3D *interSectionPoint
-    ) = 0;
+    virtual bool bounceRay(Ray &ray, const Vector3D &normal, const Vector3D &interSectionPoint) = 0;
 
     virtual string getExportString() = 0;
 };

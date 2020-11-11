@@ -23,7 +23,7 @@ public:
 
     void setElement(int i, int j, double value);
 
-    Vector3D dot(Vector3D vec);
+    Vector3D dot(Vector3D vec) const;
 
 };
 

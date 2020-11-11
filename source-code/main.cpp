@@ -17,11 +17,12 @@ using namespace std;
 
 int main() {
 
-    int numberOfRaysPerBounce = 10;
+    int numberOfSamples = 5;
     int bounceDepth = 3;
     int width = 500;
     int height = 500;
     bool smoothen = false;
+    bool msaa = true;
 
 
     auto start = chrono::steady_clock::now();
@@ -41,9 +42,9 @@ int main() {
 //    vector<Mesh *> meshes{&lightSource,sphere};
 //    MeshCollection meshCollection = MeshCollection(meshes);
 
-    Scene scene = Scene(&meshCollection, width, height, smoothen, numberOfRaysPerBounce, bounceDepth);
+    Scene scene = Scene(&meshCollection, width, height, smoothen, bounceDepth);
 
-    scene.render(SAVE_ADDRESS);
+    scene.render(SAVE_ADDRESS, numberOfSamples, msaa);
 
     auto end = chrono::steady_clock::now();
     cout << endl;

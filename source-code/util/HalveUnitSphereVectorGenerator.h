@@ -14,6 +14,8 @@ public:
     static Vector3D generateVectorHalveUnitSphere();
 
     static Vector3D generateCosineWeightedVector();
+
+    static Vector3D generateCosineWeightedVectorAroundNormal(Vector3D normal);
 };
 
 

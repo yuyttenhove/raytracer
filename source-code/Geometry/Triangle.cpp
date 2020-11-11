@@ -37,13 +37,13 @@ Mesh *Triangle::getMesh() const {
     return mesh;
 }
 
-void Triangle::translate(Vector3D translation) {
+void Triangle::translate(const Vector3D &translation) {
     vertex0 = vertex0 + translation;
     vertex1 = vertex1 + translation;
     vertex2 = vertex2 + translation;
 }
 
-void Triangle::rotate(Matrix3x3 rotationMatrix) {
+void Triangle::rotate(const Matrix3x3 &rotationMatrix) {
     vertex0 = rotationMatrix.dot(vertex0);
     vertex1 = rotationMatrix.dot(vertex1);
     vertex2 = rotationMatrix.dot(vertex2);

@@ -13,17 +13,14 @@ class MeshCollection;
 
 class RayIntensityCalculator {
 
-    int numberOfRaysPerBounce;
     int bounceDepth;
     MeshCollection *meshCollection;
 
 public:
 
-    RayIntensityCalculator(int numberOfRaysPerBounce, int bounceDepth, MeshCollection *meshCollection);
+    RayIntensityCalculator(int bounceDepth, MeshCollection *meshCollection);
 
-    double calculateIntensityRay(Ray *ray);
-
-    int getNumberOfRaysPerBounce() const;
+    double calculateIntensityRay(Ray &ray);
 
 };
 

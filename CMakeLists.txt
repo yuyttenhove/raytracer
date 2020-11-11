@@ -53,7 +53,7 @@ add_executable(
         source-code/MeshCollectionImporter/MeshCreatorFromString.cpp
         source-code/MeshCollectionImporter/MeshCreatorFromString.h
         source-code/MeshCollectionImporter/MeshCollectionFromFileReader.cpp
-        source-code/MeshCollectionImporter/MeshCollectionFromFileReader.h)
+        source-code/MeshCollectionImporter/MeshCollectionFromFileReader.h source-code/util/RandomUtils.cpp source-code/util/RandomUtils.h)
 
 
 add_executable(
@@ -105,4 +105,4 @@ add_executable(
         source-code/MeshCollectionImporter/MeshCreatorFromString.cpp
         source-code/MeshCollectionImporter/MeshCreatorFromString.h
         source-code/MeshCollectionImporter/MeshCollectionFromFileReader.cpp
-        source-code/MeshCollectionImporter/MeshCollectionFromFileReader.h)
+        source-code/MeshCollectionImporter/MeshCollectionFromFileReader.h source-code/util/RandomUtils.cpp source-code/util/RandomUtils.h)

@@ -40,7 +40,7 @@ Matrix3x3::Matrix3x3(double sineTheta, double cosineTheta, Vector3D axis) {
 
 }
 
-Vector3D Matrix3x3::dot(Vector3D vec) {
+Vector3D Matrix3x3::dot(Vector3D vec) const {
 
     double vx = vec.getX();
     double vy = vec.getY();

@@ -4,9 +4,11 @@
 
 #include "Camera.h"
 #include "../util/MatrixUtils.h"
+#include "../Geometry/MeshCollection.h"
+#include "../util/RandomUtils.h"
 #include <vector>
 
-Picture Camera::takePicture() {
+Picture Camera::takePicture(int numberOfSamples, bool msaa) {
 
     vector<vector<double>> intensityValues = MatrixUtils::initializeMatrixZero(height, width);
     int counter = 0;
@@ -17,18 +19,28 @@ Picture Camera::takePicture() {
             if (counter % 1000 == 0) {
                 printProgress(j, i);
             }
-            Vector3D vectorToPixel = getVecToPixel(i, j);
-            Ray ray = Ray(vectorToPixel, origin);
-            intensityValues[height - j - 1][i] = rayIntensityCalculator.calculateIntensityRay(&ray);
+            double totalIntensity = 0;
+            for (int s = 0; s < numberOfSamples; ++s){
+                Vector3D vectorToPixel = getVecToPixel(i, j, msaa);
+                Ray ray = Ray(vectorToPixel, origin);
+                totalIntensity += rayIntensityCalculator.calculateIntensityRay(ray);
+            }
+            intensityValues[height - j - 1][i] = totalIntensity / numberOfSamples;
         }
     }
     return Picture(intensityValues);
 }
 
-Vector3D Camera::getVecToPixel(int i, int j) {
+Vector3D Camera::getVecToPixel(int i, int j, bool randomize) {
     double scaleFactor = 2. / (width);
-    double y = -(scaleFactor * (i + 0.5) - 1);
-    double z = scaleFactor * (j + 0.5 - (double) height / 2);
+    double y, z;
+    if (randomize) {
+        y = -(scaleFactor * (i + RandomUtils::randomUniform()) - 1);
+        z = scaleFactor * (j + RandomUtils::randomUniform() - (double) height / 2);
+    } else {
+        y = -(scaleFactor * (i + .5) - 1);
+        z = scaleFactor * (j + .5 - (double) height / 2);
+    }
     return Vector3D(1, y, z).normalize();
 }
 
@@ -37,7 +49,7 @@ Camera::Camera(int width, int height, const RayIntensityCalculator &rayIntensity
         height(height),
         rayIntensityCalculator(rayIntensityCalculator) {}
 
-void Camera::printProgress(int row, int column) {
+void Camera::printProgress(int row, int column) const {
 //    cout << "row: " << row << "/" << height << "\t\t" << "column: " << column << "/" << height << endl ;
     cout << "\r" << "row: " << row << "/" << height << "\t\t" << "column: " << column << "/" << height << flush;
 }

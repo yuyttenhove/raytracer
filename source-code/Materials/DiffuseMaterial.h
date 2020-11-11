@@ -7,10 +7,6 @@
 
 
 #include "Material.h"
-#include <cmath>
-#include "../MeshCollectionExporter/ExportStrings.h"
-#include "../util/HalveUnitSphereVectorGenerator.h"
-#include "../util/Matrix3x3.h"
 
 
 class DiffuseMaterial : public Material {
@@ -20,15 +16,9 @@ class DiffuseMaterial : public Material {
 public:
     DiffuseMaterial(double albedo);
 
-    double calculateIntensity(
-            Ray *ray,
-            Triangle *triangle,
-            RayIntensityCalculator *rayIntensityCalculator,
-            Vector3D *interSectionPoint
-    ) override;
+    bool bounceRay(Ray &ray, const Vector3D &normal, const Vector3D &interSectionPoint) override;
 
     virtual string getExportString() override;
-
 
 };
 
