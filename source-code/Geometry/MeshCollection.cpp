@@ -5,7 +5,7 @@
 //
 // Created by ellio on 14-10-2020.
 
-MeshCollection::MeshCollection(const vector<Mesh *> meshes) : meshes(meshes) {}
+MeshCollection::MeshCollection(const vector<Mesh *>& meshes) : meshes(meshes) {}
 
 Triangle *MeshCollection::getClosestTriangle(const Ray &ray, Vector3D &interSectionPoint) {
     float t = FLT_MAX;
@@ -19,7 +19,7 @@ Triangle *MeshCollection::getClosestTriangle(const Ray &ray, Vector3D &interSect
             bool triangleFacesRay = triangle->getNormal().dot(ray.getDirection()) < 0;
 
             if (triangleFacesRay) {
-                bool intersects = ray.intersectsTriangle(*triangle, &pathLength);
+                bool intersects = ray.intersectsTriangle(*triangle, pathLength);
                 if (intersects && pathLength < t) {
                     t = pathLength;
                     closestTriangle = triangle;

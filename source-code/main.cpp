@@ -17,8 +17,8 @@ using namespace std;
 
 int main() {
 
-    int numberOfSamples = 100;
-    int bounceDepth = 3;
+    int numberOfSamples = 5;
+    int bounceDepth = 8;
     int width = 500;
     int height = 500;
     double viewingAngle = (double) 60 / 180 * M_PI;
@@ -41,8 +41,8 @@ int main() {
     lightSource.addTriangle(&triangle);
 
     ReflectiveMaterial reflectiveMaterial = ReflectiveMaterial(.6);
-    Mesh *mirror = MeshGenerator::generateUnitCube(&reflectiveMaterial);
-    MeshTransformer::scaleToOrigin(mirror, 100);
+    Mesh *mirror = MeshGenerator::generateCube(&reflectiveMaterial);
+    MeshTransformer::scaleToOrigin(mirror, 50);
     MeshTransformer::translateMesh(mirror, {6, 0, -50.01});
 
     vector<Mesh *> meshes{&lightSource,sphere, mirror};

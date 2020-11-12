@@ -39,7 +39,7 @@ void Ray::bounce(const Vector3D &newDirection, const Vector3D &newStartPoint, do
     numberOfBouncesBefore++;
 }
 
-bool Ray::intersectsTriangle(const Triangle &triangle, float *pathLength) const {
+bool Ray::intersectsTriangle(const Triangle &triangle, float &pathLength) const {
     const float EPSILON = 0.000001;
     Vector3D vertex0 = triangle.getVertex0();
     Vector3D vertex1 = triangle.getVertex1();
@@ -63,7 +63,7 @@ bool Ray::intersectsTriangle(const Triangle &triangle, float *pathLength) const 
         return false;
     // At this stage we can compute t to find out where the intersection point is on the line.
     float t = f * edge2.dot(q);
-    *pathLength = t;
+    pathLength = t;
     if (t > EPSILON) {
         return true;
     } else {

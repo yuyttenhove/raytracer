@@ -7,7 +7,7 @@
 #include <fstream>
 #include <algorithm>
 
-void Picture::writeToFile(string fileName) {
+void Picture::writeToFile(const string& fileName) {
 
     ofstream myfile;
     myfile.open(fileName);

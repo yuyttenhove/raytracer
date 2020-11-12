@@ -7,7 +7,6 @@
 
 
 #include "Ray.h"
-#include "RayBouncer.h"
 
 class MeshCollection;
 

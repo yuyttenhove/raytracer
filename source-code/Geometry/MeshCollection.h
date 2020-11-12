@@ -17,7 +17,7 @@ class MeshCollection {
     vector<Mesh *> meshes;
 
 public:
-    explicit MeshCollection(vector<Mesh *> meshes);
+    explicit MeshCollection(const vector<Mesh *>& meshes);
 
     Triangle *getClosestTriangle(const Ray &ray, Vector3D &interSectionPoint);
 

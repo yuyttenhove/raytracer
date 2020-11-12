@@ -28,6 +28,6 @@ void Mesh::addTriangle(Triangle *triangle) {
 }
 
 void Mesh::addTriangles(vector<Triangle *> newTriangles) {
-    this->triangles.insert(this->triangles.end(), newTriangles.begin(), newTriangles.end());
+    triangles.insert(triangles.end(), newTriangles.begin(), newTriangles.end());
 }
 

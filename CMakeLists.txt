@@ -15,8 +15,6 @@ add_executable(
         source-code/Geometry/MeshCollection.h
         source-code/RayUtils/RayIntensityCalculator.cpp
         source-code/RayUtils/RayIntensityCalculator.h
-        source-code/RayUtils/RayBouncer.cpp
-        source-code/RayUtils/RayBouncer.h
         source-code/Materials/Material.h
         source-code/Materials/EmissiveMaterial.cpp
         source-code/Materials/EmissiveMaterial.h
@@ -67,8 +65,6 @@ add_executable(
         source-code/Geometry/MeshCollection.h
         source-code/RayUtils/RayIntensityCalculator.cpp
         source-code/RayUtils/RayIntensityCalculator.h
-        source-code/RayUtils/RayBouncer.cpp
-        source-code/RayUtils/RayBouncer.h
         source-code/Materials/Material.h
         source-code/Materials/EmissiveMaterial.cpp
         source-code/Materials/EmissiveMaterial.h

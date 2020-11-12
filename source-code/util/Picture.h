@@ -21,7 +21,7 @@ public:
 public:
     Picture(const vector<vector<double>> &pixels);
 
-    void writeToFile(string fileName);
+    void writeToFile(const string& fileName);
 
     void smoothen();
 

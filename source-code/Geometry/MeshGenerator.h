@@ -17,7 +17,7 @@ public:
 
     static Mesh *generateUnitCircle(Material *material, int numberOfTriangles = 50);
 
-    static Mesh *generateUnitCube(Material *material);
+    static Mesh *generateCube(Material *material);
 };
 
 

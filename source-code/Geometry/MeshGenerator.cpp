@@ -8,31 +8,31 @@
 #include "MeshGenerator.h"
 
 
-Mesh *MeshGenerator::generateUnitCube(Material *material) {
+Mesh *MeshGenerator::generateCube(Material *material) {
     Mesh *mesh = new Mesh(material);
     // ground plane
-    mesh->addTriangle(new Triangle(mesh, {-.5, -.5, -.5}, {-.5, .5, -.5}, {.5, -.5, -.5}));
-    mesh->addTriangle(new Triangle(mesh, {.5, .5, -.5}, {.5, -.5, -.5}, {-.5, .5, -.5}));
+    mesh->addTriangle(new Triangle(mesh, {-1, -1, -1}, {-1, 1, -1}, {1, -1, -1}));
+    mesh->addTriangle(new Triangle(mesh, {1, 1, -1}, {1, -1, -1}, {-1, 1, -1}));
 
     // upper plane
-    mesh->addTriangle(new Triangle(mesh, {-.5, -.5, .5}, {.5, -.5, .5}, {-.5, .5, .5}));
-    mesh->addTriangle(new Triangle(mesh, {.5, .5, .5}, {-.5, .5, .5}, {.5, -.5, .5}));
+    mesh->addTriangle(new Triangle(mesh, {-1, -1, 1}, {1, -1, 1}, {-1, 1, 1}));
+    mesh->addTriangle(new Triangle(mesh, {1, 1, 1}, {-1, 1, 1}, {1, -1, 1}));
 
     // front plane
-    mesh->addTriangle(new Triangle(mesh, {-.5, .5, .5}, {-.5, .5, -.5}, {-.5, -.5, -.5}));
-    mesh->addTriangle(new Triangle(mesh, {-.5, -.5, -.5}, {-.5, -.5, .5}, {-.5, .5, .5}));
+    mesh->addTriangle(new Triangle(mesh, {-1, 1, 1}, {-1, 1, -1}, {-1, -1, -1}));
+    mesh->addTriangle(new Triangle(mesh, {-1, -1, -1}, {-1, -1, 1}, {-1, 1, 1}));
 
     // back plane
-    mesh->addTriangle(new Triangle(mesh, {.5, .5, .5}, {.5, -.5, -.5}, {.5, .5, -.5}));
-    mesh->addTriangle(new Triangle(mesh, {.5, -.5, -.5}, {.5, .5, .5}, {.5, -.5, .5}));
+    mesh->addTriangle(new Triangle(mesh, {1, 1, 1}, {1, -1, -1}, {1, 1, -1}));
+    mesh->addTriangle(new Triangle(mesh, {1, -1, -1}, {1, 1, 1}, {1, -1, 1}));
 
     // left plane
-    mesh->addTriangle(new Triangle(mesh, {.5, .5, .5}, {.5, .5, -.5}, {-.5, .5, -.5}));
-    mesh->addTriangle(new Triangle(mesh, {.5, .5, .5}, {-.5, .5, -.5}, {-.5, .5, .5}));
+    mesh->addTriangle(new Triangle(mesh, {1, 1, 1}, {1, 1, -1}, {-1, 1, -1}));
+    mesh->addTriangle(new Triangle(mesh, {1, 1, 1}, {-1, 1, -1}, {-1, 1, 1}));
 
     // right plane
-    mesh->addTriangle(new Triangle(mesh, {.5, -.5, .5}, {-.5, -.5, -.5}, {.5, -.5, -.5}));
-    mesh->addTriangle(new Triangle(mesh, {.5, -.5, .5}, {-.5, -.5, .5}, {-.5, -.5, -.5}));
+    mesh->addTriangle(new Triangle(mesh, {1, -1, 1}, {-1, -1, -1}, {1, -1, -1}));
+    mesh->addTriangle(new Triangle(mesh, {1, -1, 1}, {-1, -1, 1}, {-1, -1, -1}));
     return mesh;
 }
 

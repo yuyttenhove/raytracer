@@ -18,7 +18,7 @@ class Scene {
 public:
     Scene(MeshCollection *meshCollection, int width, int height, double viewingAngle, bool smoothen, int bounceDepth);
 
-    void render(string fileName, int numberOfSamples, bool msaa=true);
+    void render(string fileName, int numberOfSamples, bool msaa = true);
 };
 
 

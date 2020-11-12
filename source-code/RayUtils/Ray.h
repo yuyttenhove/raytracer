@@ -32,7 +32,7 @@ public:
 
     void bounce(const Vector3D &direction, const Vector3D &startPoint, double intensity);
 
-    bool intersectsTriangle(const Triangle &triangle, float *pathLength) const;
+    bool intersectsTriangle(const Triangle &triangle, float &pathLength) const;
 };
 
 

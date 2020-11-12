@@ -39,7 +39,7 @@ Vector3D HalveUnitSphereVectorGenerator::generateCosineWeightedVector() {
     return {x, y, z};
 }
 
-Vector3D HalveUnitSphereVectorGenerator::generateCosineWeightedVectorAroundNormal(Vector3D normal) {
+Vector3D HalveUnitSphereVectorGenerator::generateCosineWeightedVectorAroundNormal(const Vector3D &normal) {
     Vector3D cosineWeightedVector = generateCosineWeightedVector();
     Vector3D rotationAxis = Vector3D(0, 0, 1).cross(normal);
 

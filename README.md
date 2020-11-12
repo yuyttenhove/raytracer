@@ -8,10 +8,11 @@
 - [x] Importance sampling
 - [x] Implement MSAA in camera
 - [x] Redo recursive ray intensity calculation (only one bounce per ray per hit, shoot multiple rays (samples) per pixel)
+- [x] Customizable FOV in Camera
+- [ ] Use C++11 random library instead of `rand()`
 - [ ] Remove hacky code DiffuseMaterial (l 25) (moved to `HalveUnitSphereVectorGenerator::generateCosineWeightedVectorAroundNormal`)
 - [ ] Extend MeshGenerator (circle, square, sphere, cone, suzanne?, ...)
 - [ ] Get OpenCV working
-- [ ] Customizable fov
 - [ ] Phong reflectance model
 - [ ] pure absorbing material (ja dit kan al met een difuus materiaal met albedo 0, maar komaan, proper is t niet :p)
 - [ ] use kd-tree or something similar for triangle stuff

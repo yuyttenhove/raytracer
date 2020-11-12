@@ -15,7 +15,7 @@ public:
 
     static Vector3D generateCosineWeightedVector();
 
-    static Vector3D generateCosineWeightedVectorAroundNormal(Vector3D normal);
+    static Vector3D generateCosineWeightedVectorAroundNormal(const Vector3D &normal);
 };
 
 

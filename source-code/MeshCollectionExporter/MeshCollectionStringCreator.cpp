@@ -5,7 +5,7 @@
 #include "MeshCollectionStringCreator.h"
 #include "../MeshCollectionExporter/ExportStrings.h"
 
-string MeshCollectionStringCreator::generateMeshCollectionString(MeshCollection meshCollection) {
+string MeshCollectionStringCreator::generateMeshCollectionString(const MeshCollection& meshCollection) {
     vector<Mesh *> meshes = meshCollection.getMeshes();
 
     string meshCollectionString;

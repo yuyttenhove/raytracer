@@ -14,7 +14,7 @@ using namespace std;
 class MeshCollectionStringCreator {
 
 public:
-    static string generateMeshCollectionString(MeshCollection meshCollection);
+    static string generateMeshCollectionString(const MeshCollection& meshCollection);
 
 };
 
