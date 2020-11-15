@@ -8,6 +8,12 @@
 #include "MeshGenerator.h"
 #include "MeshTransformer.h"
 
+Mesh *MeshGenerator::generatePlane(Material *material) {
+    Mesh *mesh = new Mesh(material);
+    mesh->addTriangle(new Triangle(mesh, {-1, -1, 1}, {1, -1, 1}, {-1, 1, 1}));
+    mesh->addTriangle(new Triangle(mesh, {1, 1, 1}, {-1, 1, 1}, {1, -1, 1}));
+    return mesh;
+}
 
 Mesh *MeshGenerator::generateCube(Material *material) {
     Mesh *mesh = new Mesh(material);

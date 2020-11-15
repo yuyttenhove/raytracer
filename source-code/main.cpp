@@ -17,9 +17,9 @@ using namespace std;
 
 int main() {
 
-    int numberOfSamples = 5;
+    int numberOfSamples = 3;
     int bounceDepth = 8;
-    int width = 500;
+    int width = 1000;
     int height = 500;
     double viewingAngle = (double) 60 / 180 * M_PI;
     bool smoothen = false;
@@ -31,27 +31,36 @@ int main() {
     string fullFileName = EXPORT_ADDRESS + PATH_DELIMITER + "HalfBacklitSphere.txt";
 //    MeshCollection meshCollection = MeshCollectionFromFileReader::readMeshCollectionFromFile(fullFileName);
 
-    DiffuseMaterial diffuseMaterial = DiffuseMaterial(0.7);
-    Mesh *sphere = MeshGenerator::generateSphere(&diffuseMaterial, 2);
-    MeshTransformer::translateMesh(sphere, {6, 0, 2});
+    DiffuseMaterial groundMaterial = DiffuseMaterial(0.3);
+    Mesh *ground = MeshGenerator::generatePlane(&groundMaterial);
+    MeshTransformer::scaleToOrigin(ground, 20);
+    MeshTransformer::translateMesh(ground, {6, 0, -1});
+
+    DiffuseMaterial objectMaterial = DiffuseMaterial(0.9);
+
+    Mesh *cube = MeshGenerator::generateCube(&objectMaterial);
+    MeshTransformer::translateMesh(cube, {6, -6, 0});
+    MeshTransformer::rotateMesh(cube, M_PI_4 * .75, {0, 0, 1});
+
+    Mesh *octahedron = MeshGenerator::generateOctahedron(&objectMaterial);
+    MeshTransformer::translateMesh(octahedron, {6, -3, 0});
+    MeshTransformer::rotateMesh(octahedron, M_PI_4 * .75, {0, 0, 1});
+
+    Mesh *cone = MeshGenerator::generateCone(&objectMaterial);
+    MeshTransformer::translateMesh(cone, {6, 0, 0});
+
+    Mesh *cylinder = MeshGenerator::generateCylinder(&objectMaterial);
+    MeshTransformer::translateMesh(cylinder, {6, 3, 0});
+
+    Mesh *sphere = MeshGenerator::generateSphere(&objectMaterial);
+    MeshTransformer::translateMesh(sphere, {6, 6, 0});
 
     EmissiveMaterial emissiveMaterial = EmissiveMaterial(1.0);
     Mesh lightSource = Mesh(&emissiveMaterial);
     Triangle triangle = Triangle(&lightSource, {-1, 1000, -1000}, {-1, 0, 1000}, {-1, 0, -1000});
     lightSource.addTriangle(&triangle);
 
-    ReflectiveMaterial reflectiveMaterial = ReflectiveMaterial(.6);
-    DiffuseMaterial dark = DiffuseMaterial(.4);
-    Mesh *mirror = MeshGenerator::generateCube(&dark);
-    MeshTransformer::scaleToOrigin(mirror, 50);
-    MeshTransformer::translateMesh(mirror, {6, 0, -51});
-
-    Mesh *cylinder = MeshGenerator::generateCylinder(&diffuseMaterial, 10);
-    MeshTransformer::rotateMesh(cylinder, -M_PI_4*.5, {0, 1, 0});
-    MeshTransformer::translateMesh(cylinder, {6, 0, -1.2});
-
-
-    vector<Mesh *> meshes{&lightSource, sphere, mirror, cylinder};
+    vector<Mesh *> meshes{&lightSource, ground, cube, octahedron, cone, cylinder, sphere};
     MeshCollection meshCollection = MeshCollection(meshes);
 
     Scene scene = Scene(&meshCollection, width, height, viewingAngle, smoothen, bounceDepth);

@@ -10,6 +10,7 @@
 
 class MeshGenerator {
 public:
+    static Mesh *generatePlane(Material *material);
 
     static Mesh *generateSphere(Material *material, int numberOfIterations = 4);
 
@@ -19,9 +20,9 @@ public:
 
     static Mesh *generateCube(Material *material);
 
-    static Mesh *generateCone(Material *material, int numberOfSections = 10);
+    static Mesh *generateCone(Material *material, int numberOfSections = 50);
 
-    static Mesh *generateCylinder(Material *material, int numberOfSections);
+    static Mesh *generateCylinder(Material *material, int numberOfSections = 50);
 };
 
 
