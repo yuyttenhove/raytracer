@@ -156,3 +156,25 @@ Mesh *MeshGenerator::generateCone(Material *material, int numberOfSections) {
 
     return mesh;
 }
+
+Mesh *MeshGenerator::generateCylinder(Material *material, int numberOfSections) {
+    Mesh *mesh = generateCircle(material, numberOfSections); // floor plane
+    MeshTransformer::rotateMesh(mesh, M_PI, {0, 1, 0});
+    MeshTransformer::translateMesh(mesh, {0, 0, -1});
+
+    Vector3D toTop = {0, 0, 2};
+    vector<Triangle*> sideTriangles = vector<Triangle*>();
+    for (auto it = mesh->begin(); it != mesh->end(); ++it) {
+        Vector3D vertex1 = (*it)->getVertex1();
+        Vector3D vertex2 = (*it)->getVertex2();
+        sideTriangles.push_back(new Triangle(mesh, vertex1+toTop, vertex2, vertex1));
+        sideTriangles.push_back(new Triangle(mesh, vertex1+toTop, vertex2+toTop, vertex2));
+    }
+    mesh->addTriangles(sideTriangles);
+
+    Mesh *topPlane = generateCircle(material, numberOfSections);
+    MeshTransformer::translateMesh(topPlane, {0, 0, 1});
+    mesh->addTriangles(topPlane->getTriangles());
+
+    return mesh;
+}

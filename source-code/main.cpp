@@ -41,16 +41,17 @@ int main() {
     lightSource.addTriangle(&triangle);
 
     ReflectiveMaterial reflectiveMaterial = ReflectiveMaterial(.6);
-    Mesh *mirror = MeshGenerator::generateCube(&reflectiveMaterial);
+    DiffuseMaterial dark = DiffuseMaterial(.4);
+    Mesh *mirror = MeshGenerator::generateCube(&dark);
     MeshTransformer::scaleToOrigin(mirror, 50);
     MeshTransformer::translateMesh(mirror, {6, 0, -51});
 
-    DiffuseMaterial dark = DiffuseMaterial(.4);
-    Mesh *cone = MeshGenerator::generateCone(&dark, 10);
-    MeshTransformer::translateMesh(cone, {6, 0, .2});
+    Mesh *cylinder = MeshGenerator::generateCylinder(&diffuseMaterial, 10);
+    MeshTransformer::rotateMesh(cylinder, -M_PI_4*.5, {0, 1, 0});
+    MeshTransformer::translateMesh(cylinder, {6, 0, -1.2});
 
 
-    vector<Mesh *> meshes{&lightSource,sphere, mirror, cone};
+    vector<Mesh *> meshes{&lightSource, sphere, mirror, cylinder};
     MeshCollection meshCollection = MeshCollection(meshes);
 
     Scene scene = Scene(&meshCollection, width, height, viewingAngle, smoothen, bounceDepth);

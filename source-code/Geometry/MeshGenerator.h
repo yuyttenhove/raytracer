@@ -20,6 +20,8 @@ public:
     static Mesh *generateCube(Material *material);
 
     static Mesh *generateCone(Material *material, int numberOfSections = 10);
+
+    static Mesh *generateCylinder(Material *material, int numberOfSections);
 };
 
 
