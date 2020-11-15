@@ -6,6 +6,7 @@
 
 #include <cmath>
 #include "MeshGenerator.h"
+#include "MeshTransformer.h"
 
 
 Mesh *MeshGenerator::generateCube(Material *material) {
@@ -36,12 +37,12 @@ Mesh *MeshGenerator::generateCube(Material *material) {
     return mesh;
 }
 
-Mesh *MeshGenerator::generateUnitCircle(Material *material, int numberOfTriangles) {
-    if (numberOfTriangles < 3) {
+Mesh *MeshGenerator::generateCircle(Material *material, int numberOfSections) {
+    if (numberOfSections < 3) {
         cout << "please use 3 or more triangles when making a circle";
-        numberOfTriangles = 3;
+        numberOfSections = 3;
     }
-    double angleTriangles = 2 * M_PI / numberOfTriangles;
+    double angleTriangles = 2 * M_PI / numberOfSections;
     Matrix3x3 newTriangleSideFindMatrix = Matrix3x3(angleTriangles, {0, 0, 1});
 
     Mesh *mesh = new Mesh(material);
@@ -49,7 +50,7 @@ Mesh *MeshGenerator::generateUnitCircle(Material *material, int numberOfTriangle
     Vector3D origin = {0, 0, 0};
     Vector3D firstVec = {1, 0, 0};
     Vector3D secondVec;
-    for (int i = 0; i < numberOfTriangles - 1; ++i) {
+    for (int i = 0; i < numberOfSections - 1; ++i) {
         secondVec = newTriangleSideFindMatrix.dot(firstVec);
         mesh->addTriangle(new Triangle(mesh, origin, firstVec, secondVec));
         firstVec = secondVec;
@@ -136,6 +137,22 @@ Mesh *MeshGenerator::generateSphere(Material *material, int numberOfIterations) 
 
         mesh->addTriangle(new Triangle(mesh, vertex0.normalize(), vertex1.normalize(), vertex2.normalize()));
     }
+
+    return mesh;
+}
+
+Mesh *MeshGenerator::generateCone(Material *material, int numberOfSections) {
+    Mesh *mesh = generateCircle(material, numberOfSections); // floor plane
+    MeshTransformer::rotateMesh(mesh, M_PI, {0, 1, 0});
+    MeshTransformer::translateMesh(mesh, {0, 0, -1});
+
+    Vector3D topVertex = {0, 0, 1};
+
+    vector<Triangle*> newTriangles = vector<Triangle*>();
+    for (auto it = mesh->begin(); it != mesh->end(); ++it) {
+        newTriangles.push_back(new Triangle(mesh, topVertex, (*it)->getVertex2(), (*it)->getVertex1()));
+    }
+    mesh->addTriangles(newTriangles);
 
     return mesh;
 }

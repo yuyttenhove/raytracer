@@ -27,7 +27,15 @@ void Mesh::addTriangle(Triangle *triangle) {
     triangles.push_back(triangle);
 }
 
-void Mesh::addTriangles(vector<Triangle *> newTriangles) {
+void Mesh::addTriangles(const vector<Triangle *>& newTriangles) {
     triangles.insert(triangles.end(), newTriangles.begin(), newTriangles.end());
+}
+
+Mesh::const_iterator Mesh::begin() {
+    return triangles.cbegin();
+}
+
+Mesh::const_iterator Mesh::end() {
+    return triangles.cend();
 }
 

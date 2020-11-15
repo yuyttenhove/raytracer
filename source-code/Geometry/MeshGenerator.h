@@ -15,9 +15,11 @@ public:
 
     static Mesh *generateOctahedron(Material *material);
 
-    static Mesh *generateUnitCircle(Material *material, int numberOfTriangles = 50);
+    static Mesh *generateCircle(Material *material, int numberOfSections = 50);
 
     static Mesh *generateCube(Material *material);
+
+    static Mesh *generateCone(Material *material, int numberOfSections = 10);
 };
 
 

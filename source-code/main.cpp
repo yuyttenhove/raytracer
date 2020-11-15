@@ -33,7 +33,7 @@ int main() {
 
     DiffuseMaterial diffuseMaterial = DiffuseMaterial(0.7);
     Mesh *sphere = MeshGenerator::generateSphere(&diffuseMaterial, 2);
-    MeshTransformer::translateMesh(sphere, {6, 0, 1});
+    MeshTransformer::translateMesh(sphere, {6, 0, 2});
 
     EmissiveMaterial emissiveMaterial = EmissiveMaterial(1.0);
     Mesh lightSource = Mesh(&emissiveMaterial);
@@ -43,9 +43,14 @@ int main() {
     ReflectiveMaterial reflectiveMaterial = ReflectiveMaterial(.6);
     Mesh *mirror = MeshGenerator::generateCube(&reflectiveMaterial);
     MeshTransformer::scaleToOrigin(mirror, 50);
-    MeshTransformer::translateMesh(mirror, {6, 0, -50.01});
+    MeshTransformer::translateMesh(mirror, {6, 0, -51});
 
-    vector<Mesh *> meshes{&lightSource,sphere, mirror};
+    DiffuseMaterial dark = DiffuseMaterial(.4);
+    Mesh *cone = MeshGenerator::generateCone(&dark, 10);
+    MeshTransformer::translateMesh(cone, {6, 0, .2});
+
+
+    vector<Mesh *> meshes{&lightSource,sphere, mirror, cone};
     MeshCollection meshCollection = MeshCollection(meshes);
 
     Scene scene = Scene(&meshCollection, width, height, viewingAngle, smoothen, bounceDepth);

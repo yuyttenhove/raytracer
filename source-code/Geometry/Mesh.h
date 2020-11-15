@@ -19,7 +19,7 @@ class Mesh {
 public:
     Mesh();
 
-    Mesh(Material *material);
+    explicit Mesh(Material *material);
 
     Mesh(const vector<Triangle *> &triangles, Material *material);
 
@@ -29,7 +29,13 @@ public:
 
     void addTriangle(Triangle *triangle);
 
-    void addTriangles(vector<Triangle *> newTriangles);
+    void addTriangles(const vector<Triangle *>& newTriangles);
+
+    typedef vector<Triangle*>::const_iterator const_iterator;
+
+    const_iterator begin();
+
+    const_iterator end();
 
 
 };
