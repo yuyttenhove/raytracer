@@ -8,6 +8,7 @@
 #include "Materials/EmissiveMaterial.h"
 #include "SystemSpecificConstants.h"
 #include "MeshCollectionImporter/MeshCollectionFromFileReader.h"
+#include "MeshCollectionExporter/MeshCollectionStringCreator.h"
 #include "Geometry/MeshGenerator.h"
 #include "Geometry/MeshTransformer.h"
 #include <random>
@@ -17,10 +18,10 @@ using namespace std;
 
 int main() {
 
-    int numberOfSamples = 3;
+    int numberOfSamples = 100;
     int bounceDepth = 8;
     int width = 1000;
-    int height = 500;
+    int height = 400;
     double viewingAngle = (double) 60 / 180 * M_PI;
     bool smoothen = false;
     bool msaa = true;
@@ -31,29 +32,29 @@ int main() {
     string fullFileName = EXPORT_ADDRESS + PATH_DELIMITER + "HalfBacklitSphere.txt";
 //    MeshCollection meshCollection = MeshCollectionFromFileReader::readMeshCollectionFromFile(fullFileName);
 
-    DiffuseMaterial groundMaterial = DiffuseMaterial(0.3);
+    DiffuseMaterial groundMaterial = DiffuseMaterial(0.5);
     Mesh *ground = MeshGenerator::generatePlane(&groundMaterial);
-    MeshTransformer::scaleToOrigin(ground, 20);
-    MeshTransformer::translateMesh(ground, {6, 0, -1});
+    MeshTransformer::scaleToOrigin(ground, 100);
+    MeshTransformer::translateMesh(ground, {15, 0, -1});
 
     DiffuseMaterial objectMaterial = DiffuseMaterial(0.9);
 
-    Mesh *cube = MeshGenerator::generateCube(&objectMaterial);
-    MeshTransformer::translateMesh(cube, {6, -6, 0});
-    MeshTransformer::rotateMesh(cube, M_PI_4 * .75, {0, 0, 1});
-
     Mesh *octahedron = MeshGenerator::generateOctahedron(&objectMaterial);
-    MeshTransformer::translateMesh(octahedron, {6, -3, 0});
-    MeshTransformer::rotateMesh(octahedron, M_PI_4 * .75, {0, 0, 1});
+    MeshTransformer::rotateMesh(octahedron, M_PI_4 * 1.2, {0, 0, 1});
+    MeshTransformer::translateMesh(octahedron, {15, 6, 0});
+
+    Mesh *cube = MeshGenerator::generateCube(&objectMaterial);
+    MeshTransformer::rotateMesh(cube, M_PI_4 * .75, {0, 0, 1});
+    MeshTransformer::translateMesh(cube, {15, 3, 0});
 
     Mesh *cone = MeshGenerator::generateCone(&objectMaterial);
-    MeshTransformer::translateMesh(cone, {6, 0, 0});
+    MeshTransformer::translateMesh(cone, {15, 0, 0});
 
     Mesh *cylinder = MeshGenerator::generateCylinder(&objectMaterial);
-    MeshTransformer::translateMesh(cylinder, {6, 3, 0});
+    MeshTransformer::translateMesh(cylinder, {15, -3, 0});
 
     Mesh *sphere = MeshGenerator::generateSphere(&objectMaterial);
-    MeshTransformer::translateMesh(sphere, {6, 6, 0});
+    MeshTransformer::translateMesh(sphere, {15, -6, 0});
 
     EmissiveMaterial emissiveMaterial = EmissiveMaterial(1.0);
     Mesh lightSource = Mesh(&emissiveMaterial);
@@ -63,9 +64,14 @@ int main() {
     vector<Mesh *> meshes{&lightSource, ground, cube, octahedron, cone, cylinder, sphere};
     MeshCollection meshCollection = MeshCollection(meshes);
 
+    string exportName = EXPORT_ADDRESS + PATH_DELIMITER + "AllShapes.txt";
+    ofstream out(exportName);
+    out << MeshCollectionStringCreator::generateMeshCollectionString(meshCollection);
+    out.close();
+
     Scene scene = Scene(&meshCollection, width, height, viewingAngle, smoothen, bounceDepth);
 
-    scene.render(SAVE_ADDRESS, numberOfSamples, msaa);
+    //scene.render(SAVE_ADDRESS, numberOfSamples, msaa);
 
     auto end = chrono::steady_clock::now();
     cout << endl;

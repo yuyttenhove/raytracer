@@ -10,8 +10,8 @@
 
 Mesh *MeshGenerator::generatePlane(Material *material) {
     Mesh *mesh = new Mesh(material);
-    mesh->addTriangle(new Triangle(mesh, {-1, -1, 1}, {1, -1, 1}, {-1, 1, 1}));
-    mesh->addTriangle(new Triangle(mesh, {1, 1, 1}, {-1, 1, 1}, {1, -1, 1}));
+    mesh->addTriangle(new Triangle(mesh, {-1, -1, 0}, {1, -1, 0}, {-1, 1, 0}));
+    mesh->addTriangle(new Triangle(mesh, {1, 1, 0}, {-1, 1, 0}, {1, -1, 0}));
     return mesh;
 }
 
